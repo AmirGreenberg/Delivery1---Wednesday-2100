@@ -36,16 +36,16 @@ var gMeme = {
 var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 }
 
 function _getLine() {
-    return gLine
+    return gLines
 }
 
-function isLineClicked(clickedPos) {
-    const { pos } = gLine
-    const distance = Math.sqrt(
-        (pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2
-    )
-    return distance <= gLine.size
-}
+// function isLineClicked(clickedPos) {
+//     const { pos } = gLine
+//     const distance = Math.sqrt(
+//         (pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2
+//     )
+//     return distance <= gLine.size
+// }
 
 function setLineDrag(isDrag) {
     gLine.isDrag = isDrag

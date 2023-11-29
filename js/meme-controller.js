@@ -1,7 +1,6 @@
 'use strict'
 
 function onInit() {
-    // initCanvas()
     addListeners()
     resizeCanvas()
     gCurrImg = initImg(gImgs[0].url)
@@ -33,35 +32,13 @@ function renderLines(lines) {
 }
 
 function renderLine(line) {
-    const {pos, size, color, txt} = line
+    const { pos, size, color, txt } = line
     drawLine(pos.x, pos.y, size, color, txt)
 }
 
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
-
-    window.addEventListener('resize', () => {
-        var center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
-        createLine(center, gLine.size, gLine.color, gLine.text, gLine.lines)
-
-        renderCanvas()
-        // resizeCanvas()
-    })
-}
-
-function onSubmit(ev) {
-    ev.preventDefault()
-    console.log('check: ')
-
-    var line = {
-        color: document.querySelector('[name=color]').value,
-        line: document.querySelector('[name=line]').value,
-        text: document.querySelector('[name=text]').value,
-        size: document.querySelector('[name=size]').value,
-    }
-
-    _saveToStorage()
 }
 
 function addMouseListeners() {
@@ -78,13 +55,26 @@ function addTouchListeners() {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
-    gLine.pos = pos
-    console.log('pos', pos)
-    renderLine(pos)
-    renderCanvas()
+    var currLineIdx = isLineClicked(pos)
+    if (!currLineIdx) return
+    console.log('check')
+    setLineDrag(currLineIdx)
+}
 
-    setLineDrag(true)
-    gStartPos = pos
+function isLineClicked(clickedPos) {
+    return gMeme.lines.findIndex((line) => {
+        const distance = Math.sqrt(
+            (line.pos.x - clickedPos.x) ** 2 + (line.pos.y - clickedPos.y) ** 2
+        )
+        console.log(distance <= line.size*1.5)
+        return distance <= line.size*1.5
+    })
+}
+
+function setLineDrag(currLineIdx) {
+    gMeme.lines[currLineIdx].isDrag = true
+    
+
 }
 
 function onMove(ev) {
