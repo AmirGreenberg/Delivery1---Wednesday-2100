@@ -1,0 +1,18 @@
+/* Playfair */
+
+@font-face {
+    font-family: play;
+    src: url(../../fonts/playfair/PlayfairDisplay-Regular.ttf);
+  }
+
+/* Ubuntu */
+@font-face {
+    font-family: ubuntu;
+    src: url(../../fonts/ubuntu/Ubuntu-Light.ttf);
+  }
+
+/* Inconsolata */
+@font-face {
+    font-family: inconsolata;
+    src: url(../../fonts/inconsolata/Inconsolata-Regular.ttf);
+  }

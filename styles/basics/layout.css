@@ -1,0 +1,36 @@
+/* MAIN LAYOUT */
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+}
+
+.main-layout > *:not(.full) {
+    grid-column: 2;
+}
+
+.main-layout > *.full {
+    grid-column: 1 / -1;
+}
+
+.main-layout > *.half-full {
+    grid-column: span 3;
+}
+
+/* CARD LAYOUT */
+
+.card-layout > * {
+    margin-bottom: 2em;
+}
+
+.card-layout > *:nth-child(odd) {
+    grid-column: 2;
+}
+
+.card-layout > *:nth-child(even) {
+    grid-column: 4;
+}
+/* 
+.card-layout > *:first-child {
+  grid-column: 1 / -1;
+} */

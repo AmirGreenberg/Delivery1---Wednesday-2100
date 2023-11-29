@@ -1,0 +1,23 @@
+.main-header {
+  height: fit-content;
+  margin-block-end: 1rem;
+}
+
+.main-header .logo {
+  color: var(--clrPrimary-1);
+  font-family: inconsolata, monospace;
+  text-transform: uppercase;
+  font-size: 2.14285714em;
+  letter-spacing: 0.2em;
+}
+
+.main-header .main-nav-list a {
+  color: inherit;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.main-header .main-nav-list a:hover {
+  color: var(--clrPrimary-1);
+  text-decoration: underline;
+}

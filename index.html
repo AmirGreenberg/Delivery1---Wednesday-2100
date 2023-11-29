@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEME EDITOR</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="https://kit.fontawesome.com/91dcf01532.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="main-layout" onload="onInit()">
+
+  <div class="main-screen" onclick="toggleMenu()"></div>
+
+  <header class="main-header flex space-between ">
+    <div class="logo">MEME EDITOR</div>
+    <nav class="main-nav flex align-center">
+      <ul class="main-nav-list  flex clean-list">
+        <li class="flex "><a onclick="onUploadImg()">Gallery</a></li>
+        <li class="flex "><a class="btn" onclick="downloadImg(this)" download="my-img.jpg">Editor</a></li>
+        <li class="flex "><a class="btn" onclick="onInit()">Save</a></li>
+        <li class="flex "><a class="btn" onclick="onInit()">About</a></li>
+      </ul>
+    </nav>
+    <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
+  </header>
+
+  <main class="main-content card-layout">
+
+
+    <section class="canvas-container card">
+      <canvas width="400" height="400"></canvas>
+    </section>
+
+    <section class="card">
+      <form class="flex space-between" id="frmRegister" onsubmit="onSubmit(event)">
+
+        <label for="text">Text:</label>
+        <input name="text" type="data-set" id="text" text="Text" placeholder="Not required" value="Text" />
+
+        <label for="color">Color: </label>
+        <input type="color" id="color" name="color" form="frmRegister" value="#0000ff" id="color" />
+
+        <label class="flex space-between" for="shape">Shape:</label>
+        <select onchange="updateSize(this.value)" id="shape" name="shape" value="Brush">
+          <option value="Brush">Brush</option>
+          <option value="Pencil">Pencil</option>
+          <option value="Triangle">Triangle</option>
+          <option value="Rectangle">Rectangle</option>
+          <option value="Circle">Circle</option>
+          <option value="Text">Text</option>
+        </select>
+
+        <label class="flex space-between" for="size">Size: <span id="sSize">10</span></label>
+        <input type="range" id="size" name="size" step="1" min="1" max="120" value="10"
+          onchange="showSize(this.value)" />
+
+      
+
+        <input type="submit" value="Save" />
+
+      </form>
+    </section>
+  </main>
+
+
+  <footer class="flex space-between">
+    <div>MEME EDITOR™️ </div>
+    <small> All rights reservered to Amir Greenberg™️ 2023</small>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.body.classList.toggle('menu-open')
+    }
+  </script>
+  <script src="js/util.service.js"></script>
+  <script src="js/shape.service.js"></script>
+  <script src="js/upload-from-local.js"></script>
+  <script src="js/sharing-on-facebook.js"></script>
+  <script src="js/form.service.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

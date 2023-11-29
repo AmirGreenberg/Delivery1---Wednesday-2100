@@ -1,0 +1,126 @@
+/* MOBILE ONLY */
+
+@media (max-width: 840px) {
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background-color: var(--clrSecondaryBase-1);
+        border-inline-start: 1px solid #ccc;
+        width: 0px;
+        z-index: 1;
+
+        transition: width 0.6s, box-shadow 0.6s;
+    }
+
+    body {
+        font-size: 0.7rem;
+        position: relative;
+    }
+
+    body.menu-open .main-nav {
+        width: 260px;
+        box-shadow: -4px 0px 20px rgb(0 0 0 / 31%);
+    }
+
+    .main-nav-list {
+        flex-direction: column;
+    }
+
+    .main-nav-list > * {
+        border-bottom: 1px solid #ccc;
+    }
+
+    .main-header .main-nav-list a {
+        display: flex;
+        padding: 0.5rem 1rem;
+
+        transition: background-color 0.4s;
+    }
+
+    .main-header .main-nav-list a:hover {
+        text-decoration: none;
+        background-color: var(--clrPrimaryBase-3);
+    }
+
+    .main-header {
+        height: 3rem;
+        margin-block-end: 1rem;
+    }
+
+    .card .card-image {
+        margin-bottom: 0.5rem;
+    }
+
+    .card .card-tag {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* SMALL  */
+
+@media (min-width: 640px) {
+    :root {
+        --card-layout-margin: 0px;
+        --card-layout-margin-center: 20px;
+    }
+    .main-layout {
+        grid-template-columns:
+        minmax(20px, 80px)
+        minmax(var(--s),auto)
+        minmax(20px, 80px);
+    }
+    .card-layout {
+        display: grid;
+        grid-template-columns:
+            var(--card-layout-margin) 1fr var(--card-layout-margin-center)
+            1fr var(--card-layout-margin);
+    }
+}
+
+/* MEDIUM  */
+
+@media (min-width: 840px) {
+    .main-layout {
+        grid-template-columns:
+        minmax(20px, 80px)
+        minmax(var(--m),auto)
+        minmax(20px, 80px);
+    }
+
+    .card-layout {
+        display: grid;
+        grid-template-columns:
+            var(--card-layout-margin) 1fr var(--card-layout-margin-center)
+            1fr var(--card-layout-margin);
+    }
+
+    .main-header .main-nav-list > li:not(:last-child) {
+        margin-inline-end: 4em;
+    }
+
+    .btn-toggle-menu {
+        display: none;
+    }
+}
+
+/* LARGE  */
+
+@media (min-width: 1100px) {
+    .main-layout {
+        grid-template-columns:
+            minmax(20px, 80px)
+            minmax(var(--l),auto)
+            minmax(20px, 80px);
+    }
+
+    .card-layout > * {
+        margin-bottom: 50px;
+    }
+
+    .card-layout > *:first-child > *:not(.card-image) {
+        margin-right: var(--card-layout-margin);
+        margin-left: var(--card-layout-margin);
+    }
+}

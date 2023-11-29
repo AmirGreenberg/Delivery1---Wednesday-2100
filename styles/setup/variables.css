@@ -1,0 +1,11 @@
+:root {
+    /* color */
+    --clrPrimaryBase: rgb(230, 222, 222); /* global font */
+    --clrPrimaryBase-3: #7a7777; /* logo footer */
+
+    --clrSecondaryBase-1: #8c6974; /* btn border */
+
+    --l: 1060px;
+    --m: 800px;
+    --s: 600px;
+}

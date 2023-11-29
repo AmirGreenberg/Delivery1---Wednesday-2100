@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: inconsolata, serif;
+    letter-spacing: 0.05em;
+    color: var(--clrPrimaryBase);
+    background-color: var(--clrSecondaryBase-1);
+    line-height: 1.7142857;
+}
+
+body {
+    margin: 0;
+    font-size: 0.875rem;
+    position: relative;
+}
+
+a {
+    cursor: pointer;
+}
