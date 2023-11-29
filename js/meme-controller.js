@@ -1,35 +1,40 @@
 'use strict'
 
 function onInit() {
-    initCanvas()
-    gLine = _loadUserFromStorage()
+    // initCanvas()
     addListeners()
-    // resizeCanvas()
-
-    // document.getElementById('sSize').innerHTML = gLine.size
-    // document.getElementById('size').value = gLine.size
-
+    resizeCanvas()
+    gCurrImg = initImg(gImgs[0].url)
+    setTimeout(() => renderMeme(), 100)
 }
 
-function renderCanvas() {
-    renderLine()
-}
-
-function initCanvas() {
-    gElCanvas = document.querySelector('canvas')
-    gCtx = gElCanvas.getContext('2d')
-
+function initImg(imgUrl = '/meme-imgs-square/1.jpg') {
     var img = new Image()
-    img.src = '/meme-imgs-square/1.jpg'
-    img.onload = function (e) {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    }
+    img.src = imgUrl
+    return img
 }
 
-function renderLine() {
-    const { pos, color, size, text, line } = getLine()
+function renderMeme() {
+    renderImg(gCurrImg)
+    renderLines(gMeme.lines)
+}
 
-    drawLine(pos.x, pos.y, size, color, text, line)
+function renderImg() {
+    var img = _getImg()
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+}
+
+function _getImg() {
+    return gCurrImg
+}
+
+function renderLines(lines) {
+    lines.forEach((line) => renderLine(line))
+}
+
+function renderLine(line) {
+    const {pos, size, color, txt} = line
+    drawLine(pos.x, pos.y, size, color, txt)
 }
 
 function addListeners() {
@@ -37,10 +42,9 @@ function addListeners() {
     addTouchListeners()
 
     window.addEventListener('resize', () => {
-        
         var center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
         createLine(center, gLine.size, gLine.color, gLine.text, gLine.lines)
-        
+
         renderCanvas()
         // resizeCanvas()
     })
@@ -57,10 +61,7 @@ function onSubmit(ev) {
         size: document.querySelector('[name=size]').value,
     }
 
-    gLine = line
-    _saveUserToStorage()
-
-    console.log('gLine', gLine)
+    _saveToStorage()
 }
 
 function addMouseListeners() {
@@ -87,18 +88,14 @@ function onDown(ev) {
 }
 
 function onMove(ev) {
-    const { isDrag } = getLine()
-    if (!isDrag) return
-
-    const pos = getEvPos(ev)
-
-    const dx = pos.x - gStartPos.x
-    const dy = pos.y - gStartPos.y
-    moveLine(dx, dy)
-
-    gStartPos = pos
-
-    renderCanvas()
+    // const { isDrag } = getLine()
+    // if (!isDrag) return
+    // const pos = getEvPos(ev)
+    // const dx = pos.x - gStartPos.x
+    // const dy = pos.y - gStartPos.y
+    // moveLine(dx, dy)
+    // gStartPos = pos
+    // renderCanvas()
 }
 
 function onUp() {

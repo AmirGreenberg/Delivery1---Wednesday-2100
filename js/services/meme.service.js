@@ -1,36 +1,41 @@
 'use strict'
-const STORAGE_USER_KEY = 'userDB'
+
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 let gElCanvas
 let gCtx
 let gStartPos
-let gLine = {}
+var gCurrImg
+gElCanvas = document.querySelector('canvas')
+gCtx = gElCanvas.getContext('2d')
 
-function _saveUserToStorage() {
-    saveToStorage(STORAGE_USER_KEY, gLine)
+var gImgs = [
+    { id: 0, url: '/meme-imgs-square/1.jpg', keywords: ['funny', 'cat'] },
+    { id: 1, url: '/meme-imgs-square/2.jpg', keywords: ['funny', 'cat'] },
+]
+var gMeme = {
+    selectedImgId: 0,
+    selectedLineIdx: 0,
+    lines: [
+        {
+            pos: { x: gElCanvas.width / 2, y: gElCanvas.height / 4 },
+            txt: 'I sometimes eat Falafel',
+            size: 20,
+            color: 'red',
+            isDrag: false,
+        },
+        {
+            pos: { x: gElCanvas.width / 2, y: (gElCanvas.height / 4) * 3 },
+            txt: 'Shwarma!',
+            size: 40,
+            color: 'blue',
+            isDrag: false,
+        },
+    ],
 }
+var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 }
 
-function _loadUserFromStorage() {
-    return loadFromStorage(STORAGE_USER_KEY)
-}
-
-function showSize(newVal) {
-    document.getElementById('sSize').innerHTML = newVal
-}
-
-function createLine(pos, size = 10, color = '#0000ff', text = 'Text', line) {
-    gLine = {
-        pos,
-        size,
-        color,
-        isDrag: false,
-        text,
-        line,
-    }
-}
-
-function getLine() {
+function _getLine() {
     return gLine
 }
 
