@@ -34,7 +34,8 @@
     </section>
 
     <section class="settings-container">
-        <button onclick="onSetSetting('pencil')">
+      <input type="text" name="txt" oninput="onSetText(this.value)">  
+      <button onclick="onSetSetting('pencil')">
           <img src="./icons/svg/add.svg" />
           
         <button onclick="onSetSetting('pencil')">
@@ -71,37 +72,7 @@
           <img src="./icons/svg/up-and-down-opposite-double-arrows-side-by-side.svg" />
 
         </button>
-      </section> 
-         <input onchange="onSetFillColor(event)" type="color" />
-      <form class="" id="frmRegister" onsubmit="onSubmit(event)">
-        
-
-        <label for="text"></label>
-        <input name="text" type="data-set" id="text" text="Text" placeholder="Not required" value="Text" />
-
-        <label for="color">Color: </label>
-        <input type="color" id="color" name="color" form="frmRegister" value="#0000ff" id="color" />
-
-        <label class="flex space-between" for="setting">Setting:</label>
-        <select onchange="updateSize(this.value)" id="setting" name="setting" value="Brush">
-          <option value="Brush">Brush</option>
-          <option value="Pencil">Pencil</option>
-          <option value="Triangle">Triangle</option>
-          <option value="Rectangle">Rectangle</option>
-          <option value="Circle">Circle</option>
-          <option value="Text">Text</option>
-        </select>
-
-        <label class="flex space-between" for="size">Size: <span id="sSize">10</span></label>
-        <input type="range" id="size" name="size" step="1" min="1" max="120" value="10"
-          onchange="showSize(this.value)" />
-
       
-
-        <input type="submit" value="Save" />
-
-      </form>
-    </section>
   </main>
 
 
