@@ -1,5 +1,6 @@
 :root {
     /* color */
+    --clrPrimaryBase1: white; /* global font */
     --clrPrimaryBase: rgb(230, 222, 222); /* global font */
     --clrPrimaryBase-3: #7a7777; /* logo footer */
 
