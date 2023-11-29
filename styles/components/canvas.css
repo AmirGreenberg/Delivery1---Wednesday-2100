@@ -1,6 +1,6 @@
 .canvas-container {
-    min-width: 30vw;
-    height: 80vh;
+    max-width: 60vw;
+    height: fit-content;
     cursor: url('/cursors/brush.cur'), auto;
 }
 

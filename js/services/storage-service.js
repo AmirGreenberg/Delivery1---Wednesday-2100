@@ -14,8 +14,3 @@ function loadFromStorage(key) {
     var strVal = localStorage.getItem(key)
     return JSON.parse(strVal)
 }
-
-function downloadImg(elLink) {
-    const imgContent = gElCanvas.toDataURL('image/jpeg')
-    elLink.href = imgContent
-}

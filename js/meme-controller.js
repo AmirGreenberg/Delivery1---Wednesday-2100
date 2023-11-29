@@ -1,33 +1,35 @@
 'use strict'
 
-let gElCanvas
-let gCtx
-let gStartPos
-let gShape = {}
-
-const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
-
 function onInit() {
-    gElCanvas = document.querySelector('canvas')
-    gCtx = gElCanvas.getContext('2d')
-    resizeCanvas()
-    gShape = _loadUserToStorage()
+    initCanvas()
+    gLine = _loadUserFromStorage()
     addListeners()
+    // resizeCanvas()
 
-    document.getElementById('sSize').innerHTML = gShape.size
-    document.getElementById('size').value = gShape.size
+    // document.getElementById('sSize').innerHTML = gLine.size
+    // document.getElementById('size').value = gLine.size
 
-    const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
 }
 
 function renderCanvas() {
-    renderShape()
+    renderLine()
 }
 
-function renderShape() {
-    const { pos, color, size, text, shape } = getShape()
+function initCanvas() {
+    gElCanvas = document.querySelector('canvas')
+    gCtx = gElCanvas.getContext('2d')
 
-    drawArc(pos.x, pos.y, size, color, text, shape)
+    var img = new Image()
+    img.src = '/meme-imgs-square/1.jpg'
+    img.onload = function (e) {
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+    }
+}
+
+function renderLine() {
+    const { pos, color, size, text, line } = getLine()
+
+    drawLine(pos.x, pos.y, size, color, text, line)
 }
 
 function addListeners() {
@@ -35,19 +37,30 @@ function addListeners() {
     addTouchListeners()
 
     window.addEventListener('resize', () => {
-        resizeCanvas()
-
-        const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
-
-        createShape(
-            center,
-            gShape.size,
-            gShape.color,
-            gShape.text,
-            gShape.shapes
-        )
+        
+        var center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
+        createLine(center, gLine.size, gLine.color, gLine.text, gLine.lines)
+        
         renderCanvas()
+        // resizeCanvas()
     })
+}
+
+function onSubmit(ev) {
+    ev.preventDefault()
+    console.log('check: ')
+
+    var line = {
+        color: document.querySelector('[name=color]').value,
+        line: document.querySelector('[name=line]').value,
+        text: document.querySelector('[name=text]').value,
+        size: document.querySelector('[name=size]').value,
+    }
+
+    gLine = line
+    _saveUserToStorage()
+
+    console.log('gLine', gLine)
 }
 
 function addMouseListeners() {
@@ -64,24 +77,24 @@ function addTouchListeners() {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
-    gShape.pos = pos
+    gLine.pos = pos
     console.log('pos', pos)
-    renderShape(pos)
+    renderLine(pos)
     renderCanvas()
 
-    setShapeDrag(true)
+    setLineDrag(true)
     gStartPos = pos
 }
 
 function onMove(ev) {
-    const { isDrag } = getShape()
+    const { isDrag } = getLine()
     if (!isDrag) return
 
     const pos = getEvPos(ev)
 
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
-    moveShape(dx, dy)
+    moveLine(dx, dy)
 
     gStartPos = pos
 
@@ -89,7 +102,7 @@ function onMove(ev) {
 }
 
 function onUp() {
-    setShapeDrag(false)
+    setLineDrag(false)
 }
 
 function resizeCanvas() {

@@ -30,7 +30,7 @@ button {
 .canvas-container,
 canvas {
     border-radius: 0.7em;
-    border: 0.1em solid var(--clrPrimaryBase1);
+    /* border: 0.1em solid var(--clrPrimaryBase1); */
 }
 
 canvas {
