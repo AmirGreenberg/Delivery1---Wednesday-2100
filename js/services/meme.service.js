@@ -1,5 +1,5 @@
 'use strict'
-
+const BOX_MARGIN = 20
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 let gElCanvas
@@ -26,6 +26,7 @@ var gMeme = {
             txt: 'Falafel Falafel Falafel!',
             size: 20,
             color: 'red',
+            font: 'inconsolata',
             isDrag: false,
         },
         {
@@ -33,10 +34,12 @@ var gMeme = {
             txt: 'Shwarma !',
             size: 40,
             color: 'blue',
+            font: 'inconsolata',
             isDrag: false,
         },
     ],
 }
+
 var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 }
 
 function moveLine(pos, dx, dy) {
@@ -58,7 +61,7 @@ function drawLine(x, y, size, color, text) {
 //     gCtx.font = size + 'px inconsolata' || getComputedStyle(document.body).font
 //     var txtWidth = gCtx.measureText(txt).width
 //     var margin = 20
-    
+
 //     gCtx.strokeStyle = color
 //     gCtx.roundRect(
 //         x - txtWidth / 2 - margin,
@@ -85,4 +88,39 @@ function drawBorder(x, y, size = 120, color = 'green', txt) {
     gCtx.strokeStyle = color
     gCtx.roundRect(topLeftX, topLeftY, width, height)
     gCtx.stroke()
+}
+
+function onUpdateTxt(line, newTxt) {
+    line.txt = newTxt
+    updateArea(line)
+}
+
+function onUpdateFontSize(line, newSize) {
+    line.font = newSize
+    updateArea(line)
+}
+
+function onUpdateFontColor(line, newColor) {
+    line.color = newColor
+    updateArea(line)
+}
+
+function onUpdateFontType(line, newFont) {
+    line.font = newFont
+    updateArea(line)
+}
+
+function updateLinesAres() {
+    gMeme.lines.map((line) => updateArea(line))
+}
+
+function updateArea(line) {
+    line.width = gCtx.measureText(line.txt).width
+    line.height = line.size / 1.5
+    line.area = {
+        xStart: line.pos.x - line.width / 2 - BOX_MARGIN,
+        xEnd: line.xStart + line.width,
+        yStart: line.pos.y - line.height,
+        yEnd: line.yStart + line.height * 2,
+    }
 }
