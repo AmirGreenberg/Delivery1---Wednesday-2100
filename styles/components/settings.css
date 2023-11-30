@@ -117,7 +117,7 @@ label input {
 
 @media (min-width: 1150px) {
     .canvas-container {
-            max-width: 95vw;
+            max-width: 80vw;
             height: 60vw;
     }
 
