@@ -4,6 +4,7 @@ function onInit() {
     addListeners()
     resizeCanvas()
     gCurrImg = initImg(gImgs[0].url)
+    gSelectedLine = gMeme.lines[0]
     setTimeout(() => renderMeme(), 100)
 }
 
@@ -14,7 +15,8 @@ function initImg(imgUrl = '/meme-imgs-square/1.jpg') {
 }
 
 function renderMeme() {
-    renderImg(gCurrImg)
+    renderImg()
+    renderBorder()
     renderLines(gMeme.lines)
 }
 
@@ -25,6 +27,15 @@ function renderImg() {
 
 function _getImg() {
     return gCurrImg
+}
+
+function renderBorder() {
+    const { pos, size, color, txt } = _getLine()
+    drawBorder(pos.x, pos.y, size, color, txt)
+}
+
+function _getLine() {
+    return gSelectedLine
 }
 
 function renderLines(lines) {
@@ -60,13 +71,14 @@ function onDown(ev) {
     var currLineIdx = isLineClicked(pos)
     if (currLineIdx === -1) {
         gMeme.selectedLineIdx = null
-        // setLineSelected(false)
+        gSelectedLine = null
         return
     } else {
         gMeme.selectedLineIdx = currLineIdx.toString()
+        gSelectedLine = gMeme.lines[gMeme.selectedLineIdx]
         setLineDrag(true)
-        // setLineSelected(true)
         gStartPos = pos
+        renderMeme()
     }
 }
 
@@ -81,24 +93,20 @@ function isLineClicked(clickedPos) {
 }
 
 function setLineDrag(isTrue) {
-    if (!gMeme.selectedLineIdx) return
-    gMeme.lines[gMeme.selectedLineIdx].isDrag = isTrue
+    var selectedLine = _getLine()
+    selectedLine.isDrag = isTrue
     gElCanvasContainer.style.cursor = isTrue ? 'grab' : 'pointer'
 }
 
-function setLineSelected(isTrue) {
-    if (gMeme.selectedLineIdx) return
-    gMeme.lines[gMeme.selectedLineIdx].isDrag = isTrue
-}
-
 function onMove(ev) {
-    if (!gMeme.selectedLineIdx) return
-    var selectedLine = gMeme.lines[gMeme.selectedLineIdx]
-    if (!selectedLine.isDrag) return
+    var selectedLine = _getLine()
+    if (!selectedLine || !selectedLine.isDrag) return
+    console.log("🚀 ~ file: meme-controller.js:103 ~ onMove ~ selectedLine:", selectedLine)
 
     // const { isDrag } = getLine()
     // if (!isDrag) return
     const pos = getEvPos(ev)
+    
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
     moveLine(pos, dx, dy)
@@ -107,6 +115,7 @@ function onMove(ev) {
 }
 
 function onUp() {
+    if (!gMeme.selectedLineIdx) return
     setLineDrag(false)
 }
 
