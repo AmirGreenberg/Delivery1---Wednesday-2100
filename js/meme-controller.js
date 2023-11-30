@@ -49,8 +49,8 @@ function renderLines(lines) {
 }
 
 function renderLine(line) {
-    const { pos, size, color, txt } = line
-    drawLine(pos.x, pos.y, size, color, txt)
+    const { pos, size, color, stroke, txt } = line
+    drawLine(pos.x, pos.y, size, color, stroke, txt)
 }
 
 function addListeners() {
@@ -107,8 +107,6 @@ function setLineDrag(isTrue) {
 function onMove(ev) {
     var selectedLine = _getLine()
     if (!selectedLine || !selectedLine.isDrag) return
-    // const { isDrag } = getLine()
-    // if (!isDrag) return
     const pos = getEvPos(ev)
 
     const dx = pos.x - gStartPos.x

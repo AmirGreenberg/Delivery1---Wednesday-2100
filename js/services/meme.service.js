@@ -28,16 +28,18 @@ var gMeme = {
             pos: { x: gElCanvas.width / 2, y: gElCanvas.height / 4 },
             txt: 'Falafel Falafel Falafel!',
             size: 20,
-            color: 'red',
-            font: 'inconsolata',
+            color: 'white',
+            stroke: 'black',
+            font: 'impact',
             isDrag: false,
         },
         {
             pos: { x: gElCanvas.width / 2, y: (gElCanvas.height / 4) * 3 },
             txt: 'Shwarma !',
             size: 40,
-            color: 'blue',
-            font: 'inconsolata',
+            color: 'white',
+            stroke: 'black',
+            font: 'impact',
             isDrag: false,
         },
     ],
@@ -51,17 +53,19 @@ function moveLine(pos, dx, dy) {
     selectedLine.pos.y += dy
 }
 
-function drawLine(x, y, size, color, text) {
+function drawLine(x, y, size, color, stroke, text) {
     gCtx.beginPath()
+    gCtx.lineWidth = '6'
+    gCtx.strokeStyle = stroke
     gCtx.fillStyle = color
-    gCtx.font = size + 'px inconsolata'
+    gCtx.font = size + 'px impact'
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
+    gCtx.strokeText(text, x, y)
     gCtx.fillText(text, x, y)
 }
 
 function drawBorder(selectedLine) {
-    gCtx.font = '30px arial'
     gCtx.strokeStyle = TEXTBOX_BORDER_COLOR
     gCtx.roundRect(
         selectedLine.area.xStart,
@@ -70,6 +74,7 @@ function drawBorder(selectedLine) {
         selectedLine.height,
         25
     )
+    gCtx.lineWidth = '2'
     gCtx.stroke()
 }
 
