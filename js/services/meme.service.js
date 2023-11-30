@@ -116,6 +116,9 @@ function updateArea(line) {
     }
 }
 
-function onChangeText(txt){
+function onChangeText(txt) {
+    var currLine = _getLine()
+    currLine.txt = txt
+    renderMeme()
     console.log(txt)
 }

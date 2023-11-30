@@ -6,6 +6,7 @@ function onInit() {
     updateLinesAreas()
     gCurrImg = initImg(gImgs[0].url)
     gSelectedLine = gMeme.lines[0]
+    gElTextContainer.value = gSelectedLine.txt
     setTimeout(() => renderMeme(), 100)
 }
 
@@ -15,13 +16,12 @@ function initImg(imgUrl = '/meme-imgs-square/1.jpg') {
     return img
 }
 
-function renderTextContainer() {}
-
 function renderMeme() {
     updateLinesAreas()
     renderImg()
     renderBorder()
     renderLines(gMeme.lines)
+    // renderText()
 }
 
 function renderImg() {
@@ -119,8 +119,10 @@ function onMove(ev) {
 }
 
 function onUp() {
-    if (!gMeme.selectedLineIdx) return
+    var selectedLine = _getLine()
+    if (!selectedLine) return
     setLineDrag(false)
+    gElTextContainer.value = selectedLine.txt
     gElTextContainer.focus()
 }
 
