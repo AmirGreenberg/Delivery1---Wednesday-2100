@@ -28,7 +28,9 @@ function _getImg() {
 }
 
 function renderLines(lines) {
-    lines.forEach((line) => renderLine(line))
+    lines.forEach((line) => {
+        renderLine(line)
+    })
 }
 
 function renderLine(line) {
@@ -56,9 +58,16 @@ function addTouchListeners() {
 function onDown(ev) {
     const pos = getEvPos(ev)
     var currLineIdx = isLineClicked(pos)
-    if (!currLineIdx) return
-    console.log('check')
-    setLineDrag(currLineIdx)
+    if (currLineIdx === -1) {
+        gMeme.selectedLineIdx = null
+        // setLineSelected(false)
+        return
+    } else {
+        gMeme.selectedLineIdx = currLineIdx.toString()
+        setLineDrag(true)
+        // setLineSelected(true)
+        gStartPos = pos
+    }
 }
 
 function isLineClicked(clickedPos) {
@@ -66,26 +75,35 @@ function isLineClicked(clickedPos) {
         const distance = Math.sqrt(
             (line.pos.x - clickedPos.x) ** 2 + (line.pos.y - clickedPos.y) ** 2
         )
-        console.log(distance <= line.size*1.5)
-        return distance <= line.size*1.5
+        // console.log(distance <= line.size * 1.5)
+        return distance <= line.size * 1.5
     })
 }
 
-function setLineDrag(currLineIdx) {
-    gMeme.lines[currLineIdx].isDrag = true
-    
+function setLineDrag(isTrue) {
+    if (!gMeme.selectedLineIdx) return
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = isTrue
+    gElCanvasContainer.style.cursor = isTrue ? 'grab' : 'pointer'
+}
 
+function setLineSelected(isTrue) {
+    if (gMeme.selectedLineIdx) return
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = isTrue
 }
 
 function onMove(ev) {
+    if (!gMeme.selectedLineIdx) return
+    var selectedLine = gMeme.lines[gMeme.selectedLineIdx]
+    if (!selectedLine.isDrag) return
+
     // const { isDrag } = getLine()
     // if (!isDrag) return
-    // const pos = getEvPos(ev)
-    // const dx = pos.x - gStartPos.x
-    // const dy = pos.y - gStartPos.y
-    // moveLine(dx, dy)
-    // gStartPos = pos
-    // renderCanvas()
+    const pos = getEvPos(ev)
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    moveLine(pos, dx, dy)
+    gStartPos = pos
+    renderMeme()
 }
 
 function onUp() {
@@ -93,9 +111,8 @@ function onUp() {
 }
 
 function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.offsetWidth
-    gElCanvas.height = elContainer.offsetHeight
+    gElCanvas.width = gElCanvasContainer.offsetWidth
+    gElCanvas.height = gElCanvasContainer.offsetHeight
 }
 
 function getEvPos(ev) {

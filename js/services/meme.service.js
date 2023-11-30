@@ -3,10 +3,12 @@
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 let gElCanvas
+let gElCanvasContainer
 let gCtx
 let gStartPos
 var gCurrImg
 gElCanvas = document.querySelector('canvas')
+gElCanvasContainer = document.querySelector('.canvas-container')
 gCtx = gElCanvas.getContext('2d')
 
 var gImgs = [
@@ -47,13 +49,15 @@ function _getLine() {
 //     return distance <= gLine.size
 // }
 
-function setLineDrag(isDrag) {
-    gLine.isDrag = isDrag
-}
+// function setLineDrag(isDrag) {
+//     gLine.isDrag = isDrag
+// }
 
-function moveLine(dx, dy) {
-    gLine.pos.x += dx
-    gLine.pos.y += dy
+function moveLine(pos, dx, dy) {
+    console.log('🚀 ~ file: meme.service.js:55 ~ moveLine ~ pos:', pos)
+    var selectedLine = gMeme.lines[gMeme.selectedLineIdx].pos
+    selectedLine.x += dx
+    selectedLine.y += dy
 }
 
 function drawLine(x, y, size, color, text) {
