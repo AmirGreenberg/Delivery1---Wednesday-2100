@@ -8,8 +8,10 @@ let gElCanvasContainer
 let gElTextContainer
 let gCtx
 let gStartPos
+let gCurrPage
 var gCurrImg
 var gSelectedLine
+
 
 gElTextContainer = document.querySelector('.text-container')
 gElCanvas = document.querySelector('canvas')

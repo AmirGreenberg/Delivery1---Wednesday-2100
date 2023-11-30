@@ -17,8 +17,8 @@
     <div class="logo">MEME EDITOR</div>
     <nav class="main-nav flex align-center">
       <ul class="main-nav-list  flex clean-list">
-        <li class="flex "><a onclick="onUploadImg()">Gallery</a></li>
-        <li class="flex "><a class="btn" onclick="downloadImg(this)" download="my-img.jpg">Editor</a></li>
+        <li class="flex "><a onclick="onSwitchPage(this)" id="toGallery">Gallery</a></li>
+        <li class="flex "><a onclick="onSwitchPage(this)" id="toGallery">Editor</a></li>
         <li class="flex "><a class="btn" onclick="onInit()">Save</a></li>
         <li class="flex "><a class="btn" onclick="onInit()">About</a></li>
       </ul>
@@ -26,8 +26,7 @@
     <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
   </header>
 
-  <main class="main-content card-layout">
-
+  <main class="page-editor curr-page main-content card-layout">
 
     <section class="canvas-container card">
       <canvas width="400" height="400"></canvas>
@@ -75,6 +74,13 @@
 
           </button>
 
+  </main>
+
+  <main class="hidden page-gallery main-content card-layout">
+    <h1>sdfsdfsdfsd</h1>
+    <div>
+      sdfsdfsdfsdsdfsdfsd
+    </div>
   </main>
 
 

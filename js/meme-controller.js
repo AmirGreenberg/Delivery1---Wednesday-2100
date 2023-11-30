@@ -145,3 +145,32 @@ function getEvPos(ev) {
     }
     return pos
 }
+
+function onSwitchPage(page) {
+    // managePages(page)
+    var elPrevPage = document.querySelector('.curr-page')
+    elPrevPage.classList.toggle('hidden')
+    elPrevPage.classList.toggle('curr-page')
+    var nextPage = page.id
+    managePages(nextPage)
+}
+
+function managePages(destination) {
+    switch (destination) {
+        case 'toGallery':
+            var elNextPage = document.querySelector('.page-gallery')
+            elNextPage.classList.toggle('hidden')
+            elNextPage.classList.toggle('curr-page')
+            gCurrPage = '.page-gallery'
+            break
+
+        case 'toEditor':
+            var elNextPage = document.querySelector('.page-editor')
+            elNextPage.classList.toggle('hidden')
+            elNextPage.classList.toggle('curr-page')
+            break
+
+        default:
+            break
+    }
+}

@@ -19,3 +19,7 @@ body {
 a {
     cursor: pointer;
 }
+
+.hidden{
+    display: none !important;
+}
