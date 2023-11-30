@@ -15,9 +15,7 @@ function initImg(imgUrl = '/meme-imgs-square/1.jpg') {
     return img
 }
 
-function renderTextContainer(){
-
-}
+function renderTextContainer() {}
 
 function renderMeme() {
     updateLinesAreas()
@@ -75,7 +73,6 @@ function addTouchListeners() {
 function onDown(ev) {
     const pos = getEvPos(ev)
     var currLineIdx = isLineClicked(pos)
-    console.log("🚀 ~ file: meme-controller.js:78 ~ onDown ~ currLineIdx:", currLineIdx)
     if (currLineIdx === -1) {
         gMeme.selectedLineIdx = null
         gSelectedLine = null
@@ -83,6 +80,7 @@ function onDown(ev) {
     } else {
         gMeme.selectedLineIdx = currLineIdx.toString()
         gSelectedLine = gMeme.lines[gMeme.selectedLineIdx]
+
         setLineDrag(true)
         gStartPos = pos
         renderMeme()
@@ -91,33 +89,14 @@ function onDown(ev) {
 
 function isLineClicked(clickedPos) {
     return gMeme.lines.findIndex((line) => {
-        console.log(" clickedPos.x:", clickedPos.x)
-        console.log(" clickedPos.y:", clickedPos.y)
-        console.log(" clickedPos.x >= line.area.xStart:", clickedPos.x >= line.area.xStart)
-        console.log(" line.area.xStart:", line.area.xStart)
-        console.log(" clickedPos.x <= line.area.xEnd:", clickedPos.x <= line.area.xEnd)
-        console.log(" line.area.xEnd:", line.area.xEnd)
-        console.log(" clickedPos.y >= line.area.yStart:", clickedPos.y >= line.area.yStart)
-        console.log(" line.area.yStart:", line.area.yStart)
-        console.log(" clickedPos.y <= line.area.yEnd:", clickedPos.y <= line.area.yEnd)
-        console.log(" line.area.yEnd:", line.area.yEnd)
-            return(
+        return (
             clickedPos.x >= line.area.xStart &&
             clickedPos.x <= line.area.xEnd &&
             clickedPos.y >= line.area.yStart &&
-            clickedPos.y <= line.area.yEnd )
-        })
+            clickedPos.y <= line.area.yEnd
+        )
+    })
 }
-
-// function isLineClicked(clickedPos) {
-//     return gMeme.lines.findIndex((line) => {
-//         const distance = Math.sqrt(
-//             (line.pos.x - clickedPos.x) ** 2 + (line.pos.y - clickedPos.y) ** 2
-//         )
-//         // console.log(distance <= line.size * 1.5)
-//         return distance <= line.size * 1.5
-//     })
-// }
 
 function setLineDrag(isTrue) {
     var selectedLine = _getLine()
@@ -131,7 +110,7 @@ function onMove(ev) {
     // const { isDrag } = getLine()
     // if (!isDrag) return
     const pos = getEvPos(ev)
-    
+
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
     moveLine(pos, dx, dy)
@@ -142,6 +121,7 @@ function onMove(ev) {
 function onUp() {
     if (!gMeme.selectedLineIdx) return
     setLineDrag(false)
+    gElTextContainer.focus()
 }
 
 function resizeCanvas() {

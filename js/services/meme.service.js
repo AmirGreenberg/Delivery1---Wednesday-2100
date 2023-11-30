@@ -5,11 +5,13 @@ const TEXTBOX_BORDER_COLOR = 'white'
 
 let gElCanvas
 let gElCanvasContainer
+let gElTextContainer
 let gCtx
 let gStartPos
 var gCurrImg
 var gSelectedLine
 
+gElTextContainer = document.querySelector('.text-container')
 gElCanvas = document.querySelector('canvas')
 gElCanvasContainer = document.querySelector('.canvas-container')
 gCtx = gElCanvas.getContext('2d')
@@ -112,4 +114,8 @@ function updateArea(line) {
         yStart: line.pos.y - line.height / 2,
         yEnd: line.pos.y - line.height / 2 + line.height,
     }
+}
+
+function onChangeText(txt){
+    console.log(txt)
 }
