@@ -1,6 +1,6 @@
 .canvas-container {
     max-width: 80vw;
-    height: 60vw;
+    height: 40vw;
     /* height: fit-content; */
     cursor: pointer;
 }

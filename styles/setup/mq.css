@@ -5,7 +5,7 @@
         position: fixed;
         top: 0;
         right: 0;
-        height: 100vh;
+        /* height: 100vh; */
         background-color: var(--clrSecondaryBase-1);
         border-inline-start: 1px solid #ccc;
         width: 0px;

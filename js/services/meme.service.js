@@ -19,12 +19,16 @@ gElCanvasContainer = document.querySelector('.canvas-container')
 gCtx = gElCanvas.getContext('2d')
 
 var gImgs = [
-    { id: 0, url: './meme-imgs-square/1.jpg', keywords: ['funny', 'cat'] },
+    {
+        id: 0,
+        url: 'http://127.0.0.1:5500/meme-imgs-square/1.jpg',
+        keywords: ['funny', 'cat'],
+    },
     { id: 1, url: './meme-imgs-square/2.jpg', keywords: ['funny', 'cat'] },
 ]
 var gMeme = {
-    selectedImgId: 0,
-    selectedLineIdx: 0,
+    selectedImgId: '0',
+    selectedLineIdx: '0',
     lines: [
         {
             pos: { x: gElCanvas.width / 2, y: gElCanvas.height / 4 },
@@ -37,7 +41,7 @@ var gMeme = {
         },
         {
             pos: { x: gElCanvas.width / 2, y: (gElCanvas.height / 4) * 3 },
-            txt: 'Shwarma !',
+            txt: 'Shawarma !',
             size: 40,
             color: 'white',
             stroke: 'black',
