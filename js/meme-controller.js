@@ -126,8 +126,8 @@ function onUp() {
 }
 
 function resizeCanvas() {
-    gElCanvas.width = gElCanvasContainer.offsetWidth
-    gElCanvas.height = gElCanvasContainer.offsetHeight
+    gElCanvas.width = gElCanvas.offsetWidth
+    gElCanvas.height = gElCanvas.offsetHeight
 }
 
 function getEvPos(ev) {
@@ -149,7 +149,7 @@ function getEvPos(ev) {
 
 function onSwitchPage(page) {
     // managePages(page)
-    
+
     var nextPage = page.id
     managePages(nextPage)
 }
