@@ -2,13 +2,14 @@
 
 function onInit() {
     addListeners()
-    resizeCanvas()
     updateLinesAreas()
     gCurrImg = initImg(gImgs[0].url)
     gSelectedLine = gMeme.lines[0]
     gElTextContainer.value = gSelectedLine.txt
     setTimeout(() => renderMeme(), 100)
-    gCurrPage = 'page-editor'
+    gCurrPage = 'page-gallery'
+    resizeCanvas()
+    window.addEventListener('resize', resizeCanvas)
 }
 
 function initImg(imgUrl = '/meme-imgs-square/1.jpg') {
@@ -22,7 +23,6 @@ function renderMeme() {
     renderImg()
     renderBorder()
     renderLines(gMeme.lines)
-    // renderText()
 }
 
 function renderImg() {
@@ -126,8 +126,11 @@ function onUp() {
 }
 
 function resizeCanvas() {
-    gElCanvas.width = gElCanvas.offsetWidth
-    gElCanvas.height = gElCanvas.offsetHeight
+    const elContainer = document.querySelector('.canvas-container')
+    
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
+    renderMeme()
 }
 
 function getEvPos(ev) {
@@ -179,6 +182,9 @@ function managePages(destination) {
                 elNextPage.classList.toggle('hidden')
                 elNextPage.classList.toggle('curr-page')
                 gCurrPage = 'page-editor'
+
+                resizeCanvas()
+                renderMeme()
             }
             break
 

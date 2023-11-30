@@ -117,6 +117,8 @@ label input {
 
 @media (min-width: 1150px) {
     .canvas-container {
+            max-width: 95vw;
+            height: 60vw;
     }
 
     button img {

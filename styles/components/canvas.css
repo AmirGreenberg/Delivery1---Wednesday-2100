@@ -1,15 +1,17 @@
 .canvas-container {
-    max-width: 60vw;
-    height: fit-content;
+    max-width: 95vw;
+    height: 60vw;
+    /* height: fit-content; */
     cursor: pointer;
 }
 
 canvas {
     border: 1px solid rgb(245, 237, 237);
 }
-
+/* 
 @media screen and (max-width: 500px) {
     .canvas-container {
-        width: 80vw;
+        max-width: 95vw;
+        height: 80vw;
     }
-}
+} */
