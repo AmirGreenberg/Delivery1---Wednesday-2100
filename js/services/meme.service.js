@@ -1,6 +1,7 @@
 'use strict'
 const BOX_MARGIN = 20
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+const TEXTBOX_BORDER_COLOR = 'white'
 
 let gElCanvas
 let gElCanvasContainer
@@ -73,20 +74,20 @@ function drawLine(x, y, size, color, text) {
 //     gCtx.stroke()
 // }
 
-function drawBorder(x, y, size = 120, color = 'green', txt) {
-    gCtx.font = size + 'px inconsolata' || getComputedStyle(document.body).font
-    var txtWidth = gCtx.measureText(txt).width
-    var margin = 20
-
-    var topLeftX = x - txtWidth / 2 - margin
-    var topLeftY = y - size / 1.5
-    var width = txtWidth + margin * 2
-    var height = (size / 1.5) * 2
-    var bottomRightX = topLeftX + width
-    var bottomRightY = topLeftY + height
-
-    gCtx.strokeStyle = color
-    gCtx.roundRect(topLeftX, topLeftY, width, height)
+function drawBorder(selectedLine) {
+    console.log(
+        '🚀 ~ file: meme.service.js:79 ~ drawBorder ~ selectedLine.area.xStart:',
+        selectedLine.area.xStart
+    )
+    gCtx.font = '30px arial'
+    gCtx.strokeStyle = TEXTBOX_BORDER_COLOR
+    gCtx.roundRect(
+        selectedLine.area.xStart,
+        selectedLine.area.yStart,
+        selectedLine.width,
+        selectedLine.height,
+        25
+    )
     gCtx.stroke()
 }
 
@@ -110,17 +111,54 @@ function onUpdateFontType(line, newFont) {
     updateArea(line)
 }
 
-function updateLinesAres() {
+function updateLinesAreas() {
     gMeme.lines.map((line) => updateArea(line))
 }
 
 function updateArea(line) {
+    var font = line.size + 'pt ' + line.font
+    console.log('🚀 ~ file: meme.service.js:117 ~ updateArea ~ font:', font)
+    console.log(
+        '🚀 ~ file: meme.service.js:117 ~ updateArea ~ line.font:',
+        line.font
+    )
+    console.log(
+        '🚀 ~ file: meme.service.js:117 ~ updateArea ~ line.size:',
+        line.size
+    )
+    gCtx.font = font || getComputedStyle(document.body).font
     line.width = gCtx.measureText(line.txt).width
-    line.height = line.size / 1.5
+    line.height = line.size + BOX_MARGIN
+
     line.area = {
-        xStart: line.pos.x - line.width / 2 - BOX_MARGIN,
-        xEnd: line.xStart + line.width,
-        yStart: line.pos.y - line.height,
-        yEnd: line.yStart + line.height * 2,
+        xStart: line.pos.x - line.width / 2 ,
+        xEnd:
+            line.pos.x -
+            line.width / 2 -
+            BOX_MARGIN +
+            line.width +
+            BOX_MARGIN * 2,
+        yStart: line.pos.y - line.height/2,
+        yEnd: line.pos.y - line.height + line.height,
     }
 }
+
+// function drawBorder(x, y, size = 120, color = 'green', txt) {
+//     gCtx.font = size + 'px inconsolata' || getComputedStyle(document.body).font
+//     var txtWidth = gCtx.measureText(txt).width
+//     var margin = 20
+
+//     var topLeftX = x - txtWidth / 2 - margin
+//     var topLeftY = y - size / 1.5
+//     var width = txtWidth + margin * 2
+//     var height = (size / 1.5) * 2
+//     var bottomRightX = topLeftX + width
+//     var bottomRightY = topLeftY + height
+
+//     gCtx.strokeStyle = color
+//     gCtx.roundRect(topLeftX, topLeftY, width, height)
+//     gCtx.stroke()
+// }
+
+//  xEnd: line.area.xStart + line.width,
+//         yEnd: line.area.yStart + line.height * 2,

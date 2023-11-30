@@ -3,6 +3,7 @@
 function onInit() {
     addListeners()
     resizeCanvas()
+    updateLinesAreas()
     gCurrImg = initImg(gImgs[0].url)
     gSelectedLine = gMeme.lines[0]
     setTimeout(() => renderMeme(), 100)
@@ -15,6 +16,7 @@ function initImg(imgUrl = '/meme-imgs-square/1.jpg') {
 }
 
 function renderMeme() {
+    updateLinesAreas()
     renderImg()
     renderBorder()
     renderLines(gMeme.lines)
@@ -30,8 +32,8 @@ function _getImg() {
 }
 
 function renderBorder() {
-    const { pos, size, color, txt } = _getLine()
-    drawBorder(pos.x, pos.y, size, color, txt)
+    var selectedLine = _getLine()
+    drawBorder(selectedLine)
 }
 
 function _getLine() {
