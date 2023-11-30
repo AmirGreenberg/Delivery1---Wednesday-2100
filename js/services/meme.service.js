@@ -19,8 +19,8 @@ gElCanvasContainer = document.querySelector('.canvas-container')
 gCtx = gElCanvas.getContext('2d')
 
 var gImgs = [
-    { id: 0, url: '/meme-imgs-square/1.jpg', keywords: ['funny', 'cat'] },
-    { id: 1, url: '/meme-imgs-square/2.jpg', keywords: ['funny', 'cat'] },
+    { id: 0, url: './meme-imgs-square/1.jpg', keywords: ['funny', 'cat'] },
+    { id: 1, url: './meme-imgs-square/2.jpg', keywords: ['funny', 'cat'] },
 ]
 var gMeme = {
     selectedImgId: 0,
