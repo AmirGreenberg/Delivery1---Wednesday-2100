@@ -28,9 +28,9 @@
     justify-content: space-between;
 }
 
-.flex.column {
+/* .flex.column {
     flex-direction: column;
-}
+} */
 
 /* LIST HELPERS */
 

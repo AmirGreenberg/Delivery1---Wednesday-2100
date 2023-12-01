@@ -5,7 +5,7 @@
         position: fixed;
         top: 0;
         right: 0;
-        /* height: 100vh; */
+        height: 100vh;
         background-color: var(--clrSecondaryBase-1);
         border-inline-start: 1px solid #ccc;
         width: 0px;
@@ -14,13 +14,8 @@
         transition: width 0.6s, box-shadow 0.6s;
     }
 
-    body {
-        font-size: 0.7rem;
-        position: relative;
-    }
-
     body.menu-open .main-nav {
-        width: 260px;
+        width: 150px;
         box-shadow: -4px 0px 20px rgb(0 0 0 / 31%);
     }
 
@@ -30,23 +25,6 @@
 
     .main-nav-list > * {
         border-bottom: 1px solid #ccc;
-    }
-
-    .main-header .main-nav-list a {
-        display: flex;
-        padding: 0.5rem 1rem;
-
-        transition: background-color 0.4s;
-    }
-
-    .main-header .main-nav-list a:hover {
-        text-decoration: none;
-        background-color: var(--clrPrimaryBase-3);
-    }
-
-    .main-header {
-        height: 3rem;
-        margin-block-end: 1rem;
     }
 
     .card .card-image {
@@ -67,9 +45,9 @@
     }
     .main-layout {
         grid-template-columns:
-        minmax(20px, 80px)
-        minmax(var(--s),auto)
-        minmax(20px, 80px);
+            minmax(20px, 80px)
+            minmax(var(--s), auto)
+            minmax(20px, 80px);
     }
     .card-layout {
         display: grid;
@@ -84,9 +62,9 @@
 @media (min-width: 840px) {
     .main-layout {
         grid-template-columns:
-        minmax(20px, 80px)
-        minmax(var(--m),auto)
-        minmax(20px, 80px);
+            minmax(20px, 80px)
+            minmax(var(--m), auto)
+            minmax(20px, 80px);
     }
 
     .card-layout {
@@ -111,7 +89,7 @@
     .main-layout {
         grid-template-columns:
             minmax(20px, 80px)
-            minmax(var(--l),auto)
+            minmax(var(--l), auto)
             minmax(20px, 80px);
     }
 

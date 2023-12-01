@@ -12,7 +12,6 @@ let gCurrPage
 var gCurrImg
 var gSelectedLine
 
-
 gElTextContainer = document.querySelector('.text-container')
 gElCanvas = document.querySelector('canvas')
 gElCanvasContainer = document.querySelector('.canvas-container')
@@ -21,17 +20,17 @@ gCtx = gElCanvas.getContext('2d')
 var gImgs = [
     {
         id: 0,
-        url: 'http://127.0.0.1:5500/meme-imgs-square/1.jpg',
+        url: 'http://127.0.0.1:5500/img/1.jpg',
         keywords: ['funny', 'cat'],
     },
-    { id: 1, url: './meme-imgs-square/2.jpg', keywords: ['funny', 'cat'] },
+    { id: 1, url: './img/2.jpg', keywords: ['funny', 'cat'] },
 ]
 var gMeme = {
     selectedImgId: '0',
     selectedLineIdx: '0',
     lines: [
         {
-            pos: { x: gElCanvas.width / 2, y: gElCanvas.height / 4 },
+            pos: { x: gElCanvas.width / 2 - 20, y: gElCanvas.height / 5 },
             txt: 'Falafel Falafel Falafel!',
             size: 20,
             color: 'white',
@@ -40,7 +39,7 @@ var gMeme = {
             isDrag: false,
         },
         {
-            pos: { x: gElCanvas.width / 2, y: (gElCanvas.height / 4) * 3 },
+            pos: { x: gElCanvas.width / 2 - 20, y: (gElCanvas.height / 4) * 3 },
             txt: 'Shawarma !',
             size: 40,
             color: 'white',
@@ -131,5 +130,71 @@ function onChangeText(txt) {
     var currLine = _getLine()
     currLine.txt = txt
     renderMeme()
-    console.log(txt)
 }
+
+function downloadImg(elLink) {
+    const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
+    elLink.href = imgContent
+}
+
+function onUploadImg() {
+    const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
+
+    function onSuccess(uploadedImgUrl) {
+        const url = encodeURIComponent(uploadedImgUrl)
+        window.open(
+            `https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`
+        )
+    }
+
+    doUploadImg(imgDataUrl, onSuccess)
+}
+
+function doUploadImg(imgDataUrl, onSuccess) {
+    const formData = new FormData()
+    formData.append('img', imgDataUrl)
+
+    const XHR = new XMLHttpRequest()
+    XHR.onreadystatechange = () => {
+        if (XHR.readyState !== XMLHttpRequest.DONE) return
+        if (XHR.status !== 200) return console.error('Error uploading image')
+        const { responseText: url } = XHR
+        console.log('Got back live url:', url)
+        onSuccess(url)
+    }
+    XHR.onerror = (req, ev) => {
+        console.error(
+            'Error connecting to server with request:',
+            req,
+            '\nGot response data:',
+            ev
+        )
+    }
+    XHR.open('POST', '//ca-upload.com/here/upload.php')
+    XHR.send(formData)
+}
+
+function _getImg() {
+    return gCurrImg
+}
+
+function _getLine() {
+    return gSelectedLine
+}
+
+function handleOnDown(pos) {
+    var currLineIdx = isLineClicked(pos)
+    if (currLineIdx === -1) {
+        gMeme.selectedLineIdx = null
+        gSelectedLine = null
+        renderMeme()
+        return
+    }
+    gMeme.selectedLineIdx = currLineIdx.toString()
+    gSelectedLine = gMeme.lines[gMeme.selectedLineIdx]
+
+    setLineDrag(true)
+    gStartPos = pos
+    renderMeme()
+}
+

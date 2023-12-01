@@ -30,17 +30,9 @@ function renderImg() {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
-function _getImg() {
-    return gCurrImg
-}
-
 function renderBorder() {
     var selectedLine = _getLine()
     drawBorder(selectedLine)
-}
-
-function _getLine() {
-    return gSelectedLine
 }
 
 function renderLines(lines) {

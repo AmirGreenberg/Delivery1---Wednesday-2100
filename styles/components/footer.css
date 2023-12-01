@@ -1,4 +1,24 @@
-footer .logo {
-    font-family: euro, monospace;
-    color: var(--clrPrimaryBase-3);
+.footer {
+    justify-items: center;
+    background-color: var(--clrTertiary-1);
+    padding: 2em 0;
 }
+
+.footer small {
+    font-size: 1em;
+    color: var(--clrPrimaryBase);
+    margin-block: 1rem;
+}
+
+.footer .social-links li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: 0.5rem;
+    color: var(--clrPrimaryBase);
+    cursor: pointer;
+
+    width: 2em;
+    height: 2em;
+}
+

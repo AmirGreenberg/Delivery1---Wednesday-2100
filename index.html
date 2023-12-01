@@ -13,13 +13,13 @@
 
   <div class="main-screen" onclick="toggleMenu()"></div>
 
-  <header class="main-header flex space-between ">
+  <header class="main-header flex space-between align-center ">
     <div class="logo">MEME EDITOR</div>
-    <nav class="main-nav flex align-center">
-      <ul class="main-nav-list  flex clean-list">
+    <nav class="main-nav ">
+      <ul class="main-nav-list flex clean-list">
         <li class="flex "><a onclick="onSwitchPage(this)" id="toGallery">Gallery</a></li>
         <li class="flex "><a onclick="onSwitchPage(this)" id="toEditor">Editor</a></li>
-        <li class="flex "><a class="btn" onclick="onInit()">Save</a></li>
+        <li class="flex "><a class="btn" onclick="onInit()">Saved</a></li>
         <li class="flex "><a class="btn" onclick="onInit()">About</a></li>
       </ul>
     </nav>
@@ -34,102 +34,106 @@
 
     <section class="settings-container">
       <!-- <textarea name="txt" id="" cols="30" rows="3" oninput="onChangeText(this.value)" value="" class="text-container" autofocus></textarea> -->
-      <input class="text-container" type="text" name="txt" value="" oninput="onChangeText(this.value)" 
+      <input class="text-container" type="text" name="txt" value="" oninput="onChangeText(this.value)"
         placeholder="Enter your text here">
       <button onclick="onSetSetting('pencil')">
-        <img src="./icons/svg/add.svg" />
+        <img src="./icons/add.svg" />
+      </button>
+      <!-- <button onclick="onSetSetting('pencil')">
+        <img src="./icons/align-to-left.svg" />
+      </button>
+      <button onclick="onSetSetting('pencil')">
+        <img src="./icons/align-to-right.svg" /></button>
+      <button onclick="onSetSetting('pencil')">
+        <img src="./icons/center-text-alignment.svg" /></button> -->
+      <button onclick="onSetSetting('pencil')">
+        <img src="./icons/decrease font - icon.svg" /></button>
 
-        <button onclick="onSetSetting('pencil')">
-          <img src="./icons/svg/align-to-left.svg" />
-        </button>
-        <button onclick="onSetSetting('pencil')">
-          <img src="./icons/svg/align-to-right.svg" /></button>
-        <button onclick="onSetSetting('pencil')">
-          <img src="./icons/svg/center-text-alignment.svg" /></button>
-        <button onclick="onSetSetting('pencil')">
-          <img src="./icons/svg/decrease font - icon.svg" /></button>
-        <button onclick="onSetSetting('pencil')">
-          <img src="./icons/svg/facebook-logo.svg" /></button>
-        <button onclick="onSetSetting('pencil')">
-          <img src="./icons/svg/github-logo.svg" />
-          <button onclick="onSetSetting('pencil')">
-            <img src="./icons/svg/increase font - icon.svg" /></button>
-          <button onclick="onSetSetting('pencil')">
-            <img src="./icons/svg/linkedin-logo.svg" /></button>
-          <button onclick="onSetSetting('pencil')">
-            <img src="./icons/svg/paint-board-and-brush.svg" /></button>
-          <button onclick="onSetSetting('pencil')">
-            <img src="./icons/svg/search-icon.svg" /></button>
-          <button onclick="onSetSetting('pencil')">
-            <img src="./icons/svg/text stroke.svg" /></button>
-          <button onclick="onSetSetting('pencil')">
-            <img src="./icons/svg/trash.svg" /></button>
-          <button onclick="onSetSetting('pencil')">
-            <img src="./icons/svg/left.svg" /></button>
-          <button onclick="onSetSetting('pencil')">
-            <img src="./icons/svg/right.svg" /></button>
-          <button onclick="onSetSetting('pencil')">
-            <img src="./icons/svg/shuffle.svg" /></button>
-          <button onclick="onSetSetting('pencil')">
-            <img src="./icons/svg/up-and-down-opposite-double-arrows-side-by-side.svg" />
+      <button onclick="onSetSetting('pencil')">
+        <img src="./icons/increase font - icon.svg" /></button>
 
-          </button>
+      <button onclick="onSetSetting('pencil')">
+        <img src="./icons/paint-board-and-brush.svg" /></button>
+      <button onclick="onSetSetting('pencil')">
+        <img src="./icons/search-icon.svg" /></button>
+      <button onclick="onSetSetting('pencil')">
+        <img src="./icons/text stroke.svg" /></button>
+      <button onclick="onSetSetting('pencil')">
+        <img src="./icons/trash.svg" /></button>
+      <button onclick="onSetSetting('pencil')">
+        <img src="./icons/left.svg" /></button>
+      <button onclick="onSetSetting('pencil')">
+        <img src="./icons/right.svg" /></button>
+      <button onclick="onSetSetting('pencil')">
+        <img src="./icons/shuffle.svg" /></button>
+      <button onclick="onSetSetting('pencil')">
+        <img src="./icons/up-and-down-opposite-double-arrows-side-by-side.svg" />
+
+      </button>
 
   </main>
 
   <main class="curr-page page-gallery main-content ">
-    <!-- <h1>sdfsdfsdfsd</h1> -->
     <section class="grid-container">
-      <img src="./meme-imgs-square/1.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./meme-imgs-square/2.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./meme-imgs-square/3.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./meme-imgs-square/4.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./meme-imgs-square/5.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./meme-imgs-square/6.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./meme-imgs-square/7.jpg" alt="">
-      <img src="./meme-imgs-square/8.jpg" alt="">
-      <img src="./meme-imgs-square/9.jpg" alt="">
-      <img src="./meme-imgs-square/10.jpg" alt="">
-      <img src="./meme-imgs-square/11.jpg" alt="">
-      <img src="./meme-imgs-square/12.jpg" alt="">
-      <img src="./meme-imgs-square/13.jpg" alt="">
-      <img src="./meme-imgs-square/14.jpg" alt="">
-      <img src="./meme-imgs-square/15.jpg" alt="">
-      <img src="./meme-imgs-square/16.jpg" alt="">
-      <img src="./meme-imgs-square/17.jpg" alt="">
-      <img src="./meme-imgs-square/18.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/2.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/003.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/004.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/5.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/005.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/006.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/8.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/9.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/12.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/19.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/Ancient-Aliens.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/drevil.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/img2.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/img4.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/img5.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/img6.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/img11.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/img12.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/leo.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/meme1.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/One-Does-Not-Simply.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/Oprah-You-Get-A.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/patrick.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/putin.jpg" alt="">
-      <img src="./meme-imgs-various-aspect-ratios/X-Everywhere.jpg" alt="">
+      <input class="text-container" type="text" name="txt" value="" oninput="onChangeText(this.value)"
+        placeholder="Search for keywords here"></button>
+      <img src="./img/1.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/2.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/3.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/4.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/5.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/6.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/7.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/8.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/9.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/10.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/11.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/12.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/13.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/14.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/15.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/16.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/17.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/18.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/2a.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/003.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/004.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/5a.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/005.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/006.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/8a.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/9a.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/12a.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/19.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/Ancient-Aliens.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/drevil.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/img2.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/img4.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/img5.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/img6.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/img11.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/img12.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/leo.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/meme1.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/One-Does-Not-Simply.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/Oprah-You-Get-A.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/patrick.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/putin.jpg" onclick="setImg(this.src)" alt="">
+      <img src="./img/X-Everywhere.jpg" onclick="setImg(this.src)" alt="">
     </section>
   </main>
 
 
-  <footer class="flex space-between">
-    <div>MEME EDITOR™️ </div>
-    <small> All rights reservered to Amir Greenberg™️ 2023</small>
+  <footer class="footer full main-layout" aria-label="footer section">
+    <div class="logo">MEME EDITOR™️</div>
+    <small>© All rights reservered to Amir Greenberg™️ 2023 </small>
+    <ul class="social-links flex clean-list">
+
+      <li><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+
+      <li><a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+
+    </ul>
   </footer>
 
   <script>
@@ -137,14 +141,14 @@
       document.body.classList.toggle('menu-open')
     }
   </script>
-  <script src="js/services/util.service.js"></script>
-  <script src="js/services/storage-service.js"></script>
+  <script src="js/services/storage.service.js"></script>
   <script src="js/services/i18n-service.js"></script>
+  <script src="js/controllers/gallery.controller.js"></script>
+  <script src="js/services/gallery.service.js"></script>
+  <script src="js/controllers/meme-controller.js"></script>
   <script src="js/services/meme.service.js"></script>
-  <script src="js/services/upload-from-local.service.js"></script>
-  <script src="js/services/download-img.service.js"></script>
-  <script src="js/services/sharing-on-facebook.service.js"></script>
-  <script src="js/meme-controller.js"></script>
+  <script src="js/services/saved.services.js"></script>
+  <script src="js/controllers/saved.controller.js"></script>
 </body>
 
 </html>
