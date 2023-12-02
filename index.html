@@ -15,12 +15,10 @@
 
   <header class="main-header flex space-between align-center ">
     <div class="logo">MEME EDITOR</div>
-    <nav class="main-nav ">
-      <ul class="main-nav-list flex clean-list">
-        <li class="flex "><a onclick="onSwitchPage(this)" id="toGallery">Gallery</a></li>
+    <nav class="main-nav a">
+      <ul class="main-nav-list flex clean-list align-center">
+        <li class="flex align-center "><a onclick="onSwitchPage(this)" id="toGallery">Gallery</a></li>
         <li class="flex "><a onclick="onSwitchPage(this)" id="toEditor">Editor</a></li>
-        <li class="flex "><a class="btn" onclick="onInit()">Saved</a></li>
-        <li class="flex "><a class="btn" onclick="onInit()">About</a></li>
       </ul>
     </nav>
     <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
@@ -33,43 +31,41 @@
     </section>
 
     <section class="settings-container">
-      <!-- <textarea name="txt" id="" cols="30" rows="3" oninput="onChangeText(this.value)" value="" class="text-container" autofocus></textarea> -->
+
       <input class="text-container" type="text" name="txt" value="" oninput="onChangeText(this.value)"
         placeholder="Enter your text here">
-      <button onclick="onSetSetting('pencil')">
+      <button onclick="onAddLine()" alt="Add new line" title="Add new line">
         <img src="./icons/add.svg" />
       </button>
-      <!-- <button onclick="onSetSetting('pencil')">
-        <img src="./icons/align-to-left.svg" />
-      </button>
-      <button onclick="onSetSetting('pencil')">
-        <img src="./icons/align-to-right.svg" /></button>
-      <button onclick="onSetSetting('pencil')">
-        <img src="./icons/center-text-alignment.svg" /></button> -->
-      <button onclick="onSetSetting('pencil')">
+
+      <button onclick="onDecreaseFont()" alt="Decrease font" title="Decrease font">
         <img src="./icons/decrease font - icon.svg" /></button>
 
-      <button onclick="onSetSetting('pencil')">
+      <button onclick="onIncreaseFont()" alt="Increase font" title="Increase font">
         <img src="./icons/increase font - icon.svg" /></button>
 
-      <button onclick="onSetSetting('pencil')">
+      <button onchange="onChangeTextColor()" alt="Change text color" title="Change text color"><input type="color"
+          id="txt-color" name="txt-color" form="frmRegister"
+          style='opacity:0;width:5em;height:5em;translate:-30% -30%;position:absolute;' />
         <img src="./icons/paint-board-and-brush.svg" /></button>
-      <button onclick="onSetSetting('pencil')">
-        <img src="./icons/search-icon.svg" /></button>
-      <button onclick="onSetSetting('pencil')">
-        <img src="./icons/text stroke.svg" /></button>
-      <button onclick="onSetSetting('pencil')">
-        <img src="./icons/trash.svg" /></button>
-      <button onclick="onSetSetting('pencil')">
-        <img src="./icons/left.svg" /></button>
-      <button onclick="onSetSetting('pencil')">
-        <img src="./icons/right.svg" /></button>
-      <button onclick="onSetSetting('pencil')">
-        <img src="./icons/shuffle.svg" /></button>
-      <button onclick="onSetSetting('pencil')">
-        <img src="./icons/up-and-down-opposite-double-arrows-side-by-side.svg" />
 
-      </button>
+      <button onchange="onChangeStrokeColor()" alt="Change text stroke color" title="Change text stroke color"><input
+          type="color" id="txt-stroke" name="txt-stroke" form="frmRegister"
+          style='opacity:0;width:5em;height:5em;translate:-30% -30%;position:absolute;' />
+        <img src="./icons/text stroke.svg" /></button>
+
+      <button onclick="onDeleteLine()">
+        <img src="./icons/trash.svg" /></button>
+
+      <button href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">
+        <img src="./icons/shuffle.svg" /></button>
+
+
+      <button onclick="onUploadImg()">
+        <img src="./icons/share.svg" /></button>
+
+      <a href="#" class="download-btn " onclick="downloadImg(this)" download="my-img.jpg"><h2>Download your MEME</h2> </a>
+
 
   </main>
 

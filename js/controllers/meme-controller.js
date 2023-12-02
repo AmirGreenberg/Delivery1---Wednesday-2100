@@ -67,6 +67,7 @@ function onDown(ev) {
     const pos = getEvPos(ev)
     var currLineIdx = isLineClicked(pos)
     if (currLineIdx === -1) {
+        // gMeme.prevSelectedLineIdx.push(gMeme.selectedLineIdx)
         gMeme.selectedLineIdx = null
         gSelectedLine = null
 
@@ -74,6 +75,9 @@ function onDown(ev) {
         renderMeme()
         return
     } else {
+        if (currLineIdx.toString() !== gMeme.selectedLineIdx) {
+            gMeme.prevSelectedLineIdx.push(gMeme.selectedLineIdx)
+        }
         gMeme.selectedLineIdx = currLineIdx.toString()
         gSelectedLine = gMeme.lines[gMeme.selectedLineIdx]
 

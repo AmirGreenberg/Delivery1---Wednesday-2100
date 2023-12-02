@@ -32,7 +32,18 @@ button,
 .btn {
     cursor: pointer;
     transition: 0.2s;
-    width: fit-content;
+    width: 5em;
+    height: 5em;
+}
+
+.download-btn {
+    cursor: pointer;
+    transition: 0.2s;
+    color: var(--clrPrimary1);
+}
+
+.download-btn:hover {
+    scale: 1.1;
 }
 
 a:hover,
@@ -70,4 +81,8 @@ button img {
     text-transform: uppercase;
     font-family: ubuntu, sans-serif;
     margin-bottom: 1.5rem;
+}
+
+input[type='txt-color']:hover + button {
+    background: #fff;
 }

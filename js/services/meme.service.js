@@ -11,6 +11,7 @@ let gStartPos
 let gCurrPage
 var gCurrImg
 var gSelectedLine
+var color = `yellow`
 
 gElTextContainer = document.querySelector('.text-container')
 gElCanvas = document.querySelector('canvas')
@@ -28,6 +29,7 @@ var gImgs = [
 var gMeme = {
     selectedImgId: '0',
     selectedLineIdx: '0',
+    prevSelectedLineIdx: [0],
     lines: [
         {
             pos: { x: gElCanvas.width / 2 - 20, y: gElCanvas.height / 5 },
@@ -52,6 +54,93 @@ var gMeme = {
 
 var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 }
 
+function _createLine(pos, txt, size, color, stroke, font, isDrag) {
+    return {
+        pos,
+        txt,
+        size,
+        color,
+        stroke,
+        font,
+        isDrag,
+    }
+}
+
+function onAddLine() {
+    gMeme.lines.push(
+        _createLine(
+            {
+                x: gElCanvas.width / 2 - 20,
+                y: gElCanvas.height / 2 - 20,
+            },
+            'Enter Text',
+            30,
+            'white',
+            'black',
+            'impact',
+            false
+        )
+    )
+    gMeme.prevSelectedLineIdx.push(gMeme.selectedLineIdx)
+    gMeme.selectedLineIdx = (gMeme.lines.length - 1).toString()
+    gSelectedLine = gMeme.lines[gMeme.selectedLineIdx]
+    gElTextContainer.value = gSelectedLine.txt
+    renderMeme()
+    gElTextContainer.focus()
+}
+
+function onDecreaseFont() {
+    var selectedLine = _getLine()
+    selectedLine.size -= 1
+    renderMeme()
+    gElTextContainer.focus()
+}
+
+function onIncreaseFont() {
+    var selectedLine = _getLine()
+    selectedLine.size += 1
+    renderMeme()
+    gElTextContainer.focus()
+}
+
+function onIncreaseFont() {
+    var selectedLine = _getLine()
+    selectedLine.size += 1
+    renderMeme()
+    gElTextContainer.focus()
+}
+
+function onChangeTextColor() {
+    var newColor = document.querySelector('[name=txt-color]').value
+    var selectedLine = _getLine()
+    selectedLine.color = newColor
+    renderMeme()
+    gElTextContainer.focus()
+}
+
+function onChangeStrokeColor() {
+    var newColor = document.querySelector('[name=txt-stroke]').value
+    var selectedLine = _getLine()
+    selectedLine.stroke = newColor
+    renderMeme()
+    gElTextContainer.focus()
+}
+
+function onDeleteLine() {
+    // gMeme.prevSelectedLineIdx.push(gMeme.selectedLineIdx)
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    gMeme.selectedLineIdx =
+        gMeme.prevSelectedLineIdx[
+            gMeme.prevSelectedLineIdx.length - 1
+        ].toString()
+
+    gSelectedLine = gMeme.lines[gMeme.selectedLineIdx]
+    gMeme.prevSelectedLineIdx.pop()
+    gElTextContainer.value = gSelectedLine.txt
+    renderMeme()
+    gElTextContainer.focus()
+}
+
 function moveLine(pos, dx, dy) {
     var selectedLine = _getLine()
     selectedLine.pos.x += dx
@@ -71,6 +160,7 @@ function drawLine(x, y, size, color, stroke, text) {
 }
 
 function drawBorder(selectedLine) {
+    if (!selectedLine) return
     gCtx.strokeStyle = TEXTBOX_BORDER_COLOR
     gCtx.roundRect(
         selectedLine.area.xStart,
@@ -182,19 +272,6 @@ function _getLine() {
     return gSelectedLine
 }
 
-function handleOnDown(pos) {
-    var currLineIdx = isLineClicked(pos)
-    if (currLineIdx === -1) {
-        gMeme.selectedLineIdx = null
-        gSelectedLine = null
-        renderMeme()
-        return
-    }
-    gMeme.selectedLineIdx = currLineIdx.toString()
-    gSelectedLine = gMeme.lines[gMeme.selectedLineIdx]
-
-    setLineDrag(true)
-    gStartPos = pos
-    renderMeme()
+function _getLineIdx() {
+    return gMeme.selectedLineIdx
 }
-
