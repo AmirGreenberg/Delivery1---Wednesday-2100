@@ -11,12 +11,14 @@ let gStartPos
 let gCurrPage
 var gCurrImg
 var gSelectedLine
-var color = `yellow`
 
 gElTextContainer = document.querySelector('.text-container')
 gElCanvas = document.querySelector('canvas')
 gElCanvasContainer = document.querySelector('.canvas-container')
 gCtx = gElCanvas.getContext('2d')
+
+var prevHeight = gElCanvas.height
+var prevWidth = gElCanvas.width
 
 var gImgs = [
     {
@@ -29,10 +31,10 @@ var gImgs = [
 var gMeme = {
     selectedImgId: '0',
     selectedLineIdx: '0',
-    prevSelectedLineIdx: [0],
+    prevSelectedLineIdx: ['0'],
     lines: [
         {
-            pos: { x: gElCanvas.width / 2 - 20, y: gElCanvas.height / 5 },
+            pos: { x: 400 / 2, y: 400 / 4 },
             txt: 'Falafel Falafel Falafel!',
             size: 20,
             color: 'white',
@@ -41,7 +43,7 @@ var gMeme = {
             isDrag: false,
         },
         {
-            pos: { x: gElCanvas.width / 2 - 20, y: (gElCanvas.height / 4) * 3 },
+            pos: { x: 400 / 2, y: (400 / 4) * 3 },
             txt: 'Shawarma !',
             size: 40,
             color: 'white',
@@ -70,8 +72,8 @@ function onAddLine() {
     gMeme.lines.push(
         _createLine(
             {
-                x: gElCanvas.width / 2 - 20,
-                y: gElCanvas.height / 2 - 20,
+                x: gElCanvas.width / 2,
+                y: gElCanvas.height / 2,
             },
             'Enter Text',
             30,
@@ -121,7 +123,7 @@ function onChangeTextColor() {
 function onChangeStrokeColor() {
     var newColor = document.querySelector('[name=txt-stroke]').value
     var selectedLine = _getLine()
-    selectedLine.stroke = newColor
+    selectedLine.stroke = newColor.toString
     renderMeme()
     gElTextContainer.focus()
 }
@@ -129,16 +131,24 @@ function onChangeStrokeColor() {
 function onDeleteLine() {
     // gMeme.prevSelectedLineIdx.push(gMeme.selectedLineIdx)
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
-    gMeme.selectedLineIdx =
-        gMeme.prevSelectedLineIdx[
-            gMeme.prevSelectedLineIdx.length - 1
-        ].toString()
 
-    gSelectedLine = gMeme.lines[gMeme.selectedLineIdx]
-    gMeme.prevSelectedLineIdx.pop()
-    gElTextContainer.value = gSelectedLine.txt
-    renderMeme()
-    gElTextContainer.focus()
+    if (!gMeme.prevSelectedLineIdx.length) {
+        gElTextContainer.value = ''
+        gSelectedLine = null
+        renderMeme()
+        gElTextContainer.focus()
+    } else {
+        gMeme.selectedLineIdx =
+            gMeme.prevSelectedLineIdx[
+                gMeme.prevSelectedLineIdx.length - 1
+            ].toString()
+
+        gSelectedLine = gMeme.lines[gMeme.selectedLineIdx]
+        gMeme.prevSelectedLineIdx.pop()
+        gElTextContainer.value = gSelectedLine.txt
+        renderMeme()
+        gElTextContainer.focus()
+    }
 }
 
 function moveLine(pos, dx, dy) {
@@ -198,6 +208,7 @@ function updateLinesAreas() {
 }
 
 function updateArea(line) {
+    if (!gMeme.lines[0].pos) return
     var font = line.size + 'pt ' + line.font
     gCtx.font = font || getComputedStyle(document.body).font
     line.width = gCtx.measureText(line.txt).width

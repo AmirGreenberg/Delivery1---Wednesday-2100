@@ -4,6 +4,7 @@
 
 .settings-container {
     position: relative;
+    /* max-width: 30vw; */
     text-align: center;
     gap: 0.5em;
 
@@ -36,6 +37,13 @@ button,
     height: 5em;
 }
 
+button,
+.btn-toggle-menu {
+    width: 3em;
+    height: 3em;
+    border-radius: 10%;
+}
+
 .download-btn {
     cursor: pointer;
     transition: 0.2s;
@@ -52,13 +60,15 @@ button:hover,
     scale: 1.1;
 }
 
-button img {
-    width: 2em;
-    height: 2em;
+.settings-container button img {
+    box-shadow: none;
+    width: fit-content;
+    height: 3em;
 }
 
 .settings-container button {
     margin: 1em;
+    border-radius: 10%;
 }
 
 .settings-container input[type='text'] {
@@ -72,17 +82,14 @@ button img {
     margin: 0.7em;
 }
 
-.card .card-image {
-    margin-bottom: 1.5rem;
-}
-
-.card .card-tag {
-    color: var(--clrPrimary1);
-    text-transform: uppercase;
-    font-family: ubuntu, sans-serif;
-    margin-bottom: 1.5rem;
-}
-
 input[type='txt-color']:hover + button {
     background: #fff;
+}
+
+button,
+.btn {
+    cursor: pointer;
+    transition: 0.2s;
+    width: 5em;
+    height: 5em;
 }

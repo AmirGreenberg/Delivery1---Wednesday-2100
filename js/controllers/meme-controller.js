@@ -6,9 +6,11 @@ function onInit() {
     gCurrImg = initImg(gImgs[0].url)
     gSelectedLine = gMeme.lines[0]
     gElTextContainer.value = gSelectedLine.txt
-    setTimeout(() => renderMeme(), 100)
     gCurrPage = 'page-gallery'
-    resizeCanvas()
+    setTimeout(() => {
+        resizeCanvas()
+        renderMeme()
+    }, 100)
     window.addEventListener('resize', resizeCanvas)
 }
 
@@ -67,7 +69,7 @@ function onDown(ev) {
     const pos = getEvPos(ev)
     var currLineIdx = isLineClicked(pos)
     if (currLineIdx === -1) {
-        // gMeme.prevSelectedLineIdx.push(gMeme.selectedLineIdx)
+        gMeme.prevSelectedLineIdx.push(gMeme.selectedLineIdx)
         gMeme.selectedLineIdx = null
         gSelectedLine = null
 
@@ -129,6 +131,14 @@ function resizeCanvas() {
 
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight
+
+    gMeme.lines.map(function (line) {
+        line.pos.x = (line.pos.x * gElCanvas.width) / prevWidth
+        line.pos.y = (line.pos.y * gElCanvas.height) / prevHeight
+        line.size = (line.size * gElCanvas.width) / prevWidth
+    })
+    prevHeight = gElCanvas.height
+    prevWidth = gElCanvas.width
     renderMeme()
 }
 
@@ -150,8 +160,6 @@ function getEvPos(ev) {
 }
 
 function onSwitchPage(page) {
-    // managePages(page)
-
     var nextPage = page.id
     managePages(nextPage)
 }
@@ -180,12 +188,14 @@ function managePages(destination) {
                 var elNextPage = document.querySelector('.page-editor')
                 elNextPage.classList.toggle('hidden')
                 elNextPage.classList.toggle('curr-page')
-                gCurrPage = 'page-editor'
                 var selectedLine = _getLine()
-                gElTextContainer.value = selectedLine.txt
-                gElTextContainer.focus()
-                resizeCanvas()
-                setTimeout(() => renderMeme(), 100)
+                if (!selectedLine) onInit()
+                gCurrPage = 'page-editor'
+                // console.log("🚀 ~ file: meme-controller.js:193 ~ managePages ~ selectedLine:", selectedLine)
+                // gElTextContainer.value = selectedLine.txt
+                // gElTextContainer.focus()
+                // resizeCanvas()
+                // setTimeout(() => renderMeme(), 100)
             }
             break
 
@@ -196,6 +206,14 @@ function managePages(destination) {
 
 function setImg(src) {
     gImgs[0].url = src
+    gMeme
+    onInit()
+    managePages('toEditor')
+}
+
+function setOwnImg(pic) {
+    gImgs[0] = pic
+    gMeme
     onInit()
     managePages('toEditor')
 }

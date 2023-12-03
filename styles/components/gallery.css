@@ -6,23 +6,44 @@
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     grid-auto-flow: dense;
     gap: 40px;
-    padding-inline-start: 60px;
+    padding-inline: 0px;
     margin: 0 auto;
 }
 
-.grid-container img {
+.editor {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px auto;
+}
+
+.grid-container img,
+.grid-container .file-input,
+.grid-container .canvas-container {
     box-shadow: -2px 3px 7px 0px;
     width: 100%;
     cursor: pointer;
     transition: transform 0.4s;
-    align-self: center;
+    /* align-self: center; */
     border-radius: 10%;
 }
 
-.grid-container :first-child {
+.editor .canvas-container {
+    box-shadow: none;
+    width: 100%;
+    align-content: start;
+    align-self: baseline;
+}
+
+.editor .canvas {
+    width: 100%;
+    align-content: start;
+}
+
+.grid-container > input:first-child {
     grid-column-start: 1;
     grid-column-end: -1;
 
@@ -46,7 +67,10 @@ img:hover {
 @media (max-width: 740px) {
     .grid-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    .editor {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 }
 
@@ -55,11 +79,22 @@ img:hover {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
+    .editor {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
 }
 
-@media (max-width: 460px) {
-    img:nth-child(6n) {
-        grid-column: span 2;
-        grid-row: span 2;
-    }
+.file-input {
+    background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+    color: white;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+label {
+    display: grid;
 }

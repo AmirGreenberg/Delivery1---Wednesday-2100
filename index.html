@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
 
 <head>
   <meta charset="UTF-8">
@@ -9,70 +12,74 @@
   <script src="https://kit.fontawesome.com/91dcf01532.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="main-layout" onload="onInit()">
+<body class="main-layout" onload="">
 
   <div class="main-screen" onclick="toggleMenu()"></div>
 
   <header class="main-header flex space-between align-center ">
     <div class="logo">MEME EDITOR</div>
     <nav class="main-nav a">
-      <ul class="main-nav-list flex clean-list align-center">
+      <ul class="main-nav-list flex  clean-list ">
         <li class="flex align-center "><a onclick="onSwitchPage(this)" id="toGallery">Gallery</a></li>
-        <li class="flex "><a onclick="onSwitchPage(this)" id="toEditor">Editor</a></li>
+        <li class="flex align-center "><a onclick="onSwitchPage(this)" id="toEditor">Editor</a></li>
       </ul>
     </nav>
     <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
   </header>
 
-  <main class="hidden page-editor  main-content card-layout">
+  <main class="hidden page-editor  main-content ">
+    <div class="grid-container editor">
+      <section class="canvas-container">
+        <canvas width="400" height="400"></canvas>
+      </section>
 
-    <section class="canvas-container">
-      <canvas width="400" height="400"></canvas>
-    </section>
+      <section class="settings-container">
 
-    <section class="settings-container">
+        <input class="text-container" type="text" name="txt" value="" oninput="onChangeText(this.value)"
+          placeholder="Enter your text here">
+        <button onclick="onAddLine()" alt="Add new line" title="Add new line">
+          <img src="./icons/add.svg" />
+        </button>
 
-      <input class="text-container" type="text" name="txt" value="" oninput="onChangeText(this.value)"
-        placeholder="Enter your text here">
-      <button onclick="onAddLine()" alt="Add new line" title="Add new line">
-        <img src="./icons/add.svg" />
-      </button>
+        <button onclick="onDecreaseFont()" alt="Decrease font" title="Decrease font">
+          <img src="./icons/decrease font - icon.svg" /></button>
 
-      <button onclick="onDecreaseFont()" alt="Decrease font" title="Decrease font">
-        <img src="./icons/decrease font - icon.svg" /></button>
+        <button onclick="onIncreaseFont()" alt="Increase font" title="Increase font">
+          <img src="./icons/increase font - icon.svg" /></button>
 
-      <button onclick="onIncreaseFont()" alt="Increase font" title="Increase font">
-        <img src="./icons/increase font - icon.svg" /></button>
+        <button onchange="onChangeTextColor()" alt="Change text color" title="Change text color"><input type="color"
+            id="txt-color" name="txt-color" form="frmRegister"
+            style='opacity:0;width:5em;height:5em;translate:-30% -30%;position:absolute;' />
+          <img src="./icons/paint-board-and-brush.svg" /></button>
 
-      <button onchange="onChangeTextColor()" alt="Change text color" title="Change text color"><input type="color"
-          id="txt-color" name="txt-color" form="frmRegister"
-          style='opacity:0;width:5em;height:5em;translate:-30% -30%;position:absolute;' />
-        <img src="./icons/paint-board-and-brush.svg" /></button>
+        <button onchange="onChangeStrokeColor()" alt="Change text stroke color" title="Change text stroke color"><input
+            type="color" id="txt-stroke" name="txt-stroke" form="frmRegister"
+            style='opacity:0;width:5em;height:5em;translate:-30% -30%;position:absolute;' />
+          <img src="./icons/text stroke.svg" /></button>
 
-      <button onchange="onChangeStrokeColor()" alt="Change text stroke color" title="Change text stroke color"><input
-          type="color" id="txt-stroke" name="txt-stroke" form="frmRegister"
-          style='opacity:0;width:5em;height:5em;translate:-30% -30%;position:absolute;' />
-        <img src="./icons/text stroke.svg" /></button>
+        <button onclick="onDeleteLine()" alt="Delete line" title="Delete line">
+          <img src="./icons/trash.svg" /></button>
 
-      <button onclick="onDeleteLine()">
-        <img src="./icons/trash.svg" /></button>
+        <!-- <button   class="download-btn" onclick="downloadImg(this)"  alt="Download MEME" title="Download MEME" download="my-img.jpg">
+          <img src="./icons/download.svg" /></button> -->
 
-      <button href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">
-        <img src="./icons/shuffle.svg" /></button>
+        <button onclick="onUploadImg()" alt="Share MEME to Facebook " title="Share MEME to Facebook">
+          <img src="./icons/share.svg" /></button>
 
+        <a href="#" class="download-btn " onclick="downloadImg(this)" alt="Download MEME" title="Download MEME"
+          download="my-img.jpg">
+          <h2>Download your MEME</h2>
 
-      <button onclick="onUploadImg()">
-        <img src="./icons/share.svg" /></button>
-
-      <a href="#" class="download-btn " onclick="downloadImg(this)" download="my-img.jpg"><h2>Download your MEME</h2> </a>
-
-
+        </a>
+      </section>
+    </div>
   </main>
 
   <main class="curr-page page-gallery main-content ">
     <section class="grid-container">
-      <input class="text-container" type="text" name="txt" value="" oninput="onChangeText(this.value)"
+      <input class="text-container" type="text" name="txt" value="" oninput=""
         placeholder="Search for keywords here"></button>
+
       <img src="./img/1.jpg" onclick="setImg(this.src)" alt="">
       <img src="./img/2.jpg" onclick="setImg(this.src)" alt="">
       <img src="./img/3.jpg" onclick="setImg(this.src)" alt="">

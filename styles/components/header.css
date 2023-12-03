@@ -14,6 +14,5 @@
 
 .main-header .main-nav-list a:hover {
   /* text-decoration: none; */
-  background-color: var(--clrPrimaryBase);
   color: var(--clrSecondaryBase-1);
 }

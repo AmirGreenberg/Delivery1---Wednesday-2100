@@ -13,25 +13,3 @@
 .main-layout > *.full {
     grid-column: 1 / -1;
 }
-
-.main-layout > *.half-full {
-    grid-column: span 3;
-}
-
-/* CARD LAYOUT */
-
-.card-layout > * {
-    margin: 2em;
-}
-
-.card-layout > *:nth-child(odd) {
-    grid-column: 2;
-}
-
-.card-layout > *:nth-child(even) {
-    grid-column: 4;
-}
-/* 
-.card-layout > *:first-child {
-  grid-column: 1 / -1;
-} */
