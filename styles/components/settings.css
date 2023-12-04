@@ -30,17 +30,9 @@ canvas {
 }
 
 button,
-.btn {
-    cursor: pointer;
-    transition: 0.2s;
-    width: 5em;
-    height: 5em;
-}
-
-button,
 .btn-toggle-menu {
-    width: 3em;
-    height: 3em;
+    width: clamp(2em, 16vw, 4em); 
+    height: clamp(2em, 16vw, 4em); 
     border-radius: 10%;
 }
 
@@ -62,12 +54,12 @@ button:hover,
 
 .settings-container button img {
     box-shadow: none;
-    width: fit-content;
-    height: 3em;
+    width: clamp(1em, 8.5vw, 3em); 
+    height: clamp(1em, 8.5vw, 3em); 
 }
 
 .settings-container button {
-    margin: 1em;
+    margin: clamp(0.3em, 2vw, 5em); 
     border-radius: 10%;
 }
 
@@ -90,6 +82,6 @@ button,
 .btn {
     cursor: pointer;
     transition: 0.2s;
-    width: 5em;
-    height: 5em;
+    width: clamp(2em, 16vw, 4em); 
+    height: clamp(2em, 16vw, 4em); 
 }

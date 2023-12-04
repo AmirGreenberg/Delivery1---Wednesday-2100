@@ -27,110 +27,113 @@
     <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
   </header>
 
-  <main class="hidden page-editor  main-content ">
-    <div class="grid-container editor">
-      <section class="canvas-container">
-        <canvas width="400" height="400"></canvas>
-      </section>
+  <main>
 
-      <section class="settings-container">
+    <main class="hidden page-editor  main-content ">
+      <div class="grid-container editor">
+        <section class="canvas-container">
+          <canvas width="400" height="400"></canvas>
+        </section>
 
-        <input class="text-container" type="text" name="txt" value="" oninput="onChangeText(this.value)"
-          placeholder="Enter your text here">
-        <button onclick="onAddLine()" alt="Add new line" title="Add new line">
-          <img src="./icons/add.svg" />
-        </button>
+        <section class="settings-container">
 
-        <button onclick="onDecreaseFont()" alt="Decrease font" title="Decrease font">
-          <img src="./icons/decrease font - icon.svg" /></button>
+          <input class="text-container" type="text" name="txt" value="" oninput="onChangeText(this.value)"
+            placeholder="Enter your text here">
+          <button onclick="onAddLine()" alt="Add new line" title="Add new line">
+            <img src="./icons/add.svg" />
+          </button>
 
-        <button onclick="onIncreaseFont()" alt="Increase font" title="Increase font">
-          <img src="./icons/increase font - icon.svg" /></button>
+          <button onclick="onDecreaseFont()" alt="Decrease font" title="Decrease font">
+            <img src="./icons/decrease font - icon.svg" /></button>
 
-        <button onchange="onChangeTextColor()" alt="Change text color" title="Change text color"><input type="color"
-            id="txt-color" name="txt-color" form="frmRegister"
-            style='opacity:0;width:5em;height:5em;translate:-30% -30%;position:absolute;' />
-          <img src="./icons/paint-board-and-brush.svg" /></button>
+          <button onclick="onIncreaseFont()" alt="Increase font" title="Increase font">
+            <img src="./icons/increase font - icon.svg" /></button>
 
-        <button onchange="onChangeStrokeColor()" alt="Change text stroke color" title="Change text stroke color"><input
-            type="color" id="txt-stroke" name="txt-stroke" form="frmRegister"
-            style='opacity:0;width:5em;height:5em;translate:-30% -30%;position:absolute;' />
-          <img src="./icons/text stroke.svg" /></button>
+          <button onchange="onChangeTextColor()" alt="Change text color" title="Change text color"><input type="color"
+              id="txt-color" name="txt-color" form="frmRegister"
+              style='opacity:0;width:5em;height:5em;translate:-30% -30%;position:absolute;' />
+            <img src="./icons/paint-board-and-brush.svg" /></button>
 
-        <button onclick="onDeleteLine()" alt="Delete line" title="Delete line">
-          <img src="./icons/trash.svg" /></button>
+          <button onchange="onChangeStrokeColor()" alt="Change text stroke color"
+            title="Change text stroke color"><input type="color" id="txt-stroke" name="txt-stroke" form="frmRegister"
+              style='opacity:0;width:5em;height:5em;translate:-30% -30%;position:absolute;' />
+            <img src="./icons/text stroke.svg" /></button>
 
-        <!-- <button   class="download-btn" onclick="downloadImg(this)"  alt="Download MEME" title="Download MEME" download="my-img.jpg">
+          <button onclick="onDeleteLine()" alt="Delete line" title="Delete line">
+            <img src="./icons/trash.svg" /></button>
+
+          <!-- <button   class="download-btn" onclick="downloadImg(this)"  alt="Download MEME" title="Download MEME" download="my-img.jpg">
           <img src="./icons/download.svg" /></button> -->
 
-        <button onclick="onUploadImg()" alt="Share MEME to Facebook " title="Share MEME to Facebook">
-          <img src="./icons/share.svg" /></button>
+          <button onclick="onUploadImg()" alt="Share MEME to Facebook " title="Share MEME to Facebook">
+            <img src="./icons/share.svg" /></button>
 
-        <a href="#" class="download-btn " onclick="downloadImg(this)" alt="Download MEME" title="Download MEME"
-          download="my-img.jpg">
-          <h2>Download your MEME</h2>
+          <a href="#" class="download-btn " onclick="downloadImg(this)" alt="Download MEME" title="Download MEME"
+            download="my-img.jpg">
+            <h2>Download your MEME</h2>
 
-        </a>
+          </a>
+        </section>
+      </div>
+    </main>
+
+    <main class="curr-page page-gallery main-content ">
+      <section class="grid-container">
+        <input class="text-container" type="text" name="txt" value="" oninput=""
+          placeholder="Search for keywords here"></button>
+
+        <img src="./img/1.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/2.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/3.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/4.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/5.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/6.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/7.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/8.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/9.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/10.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/11.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/12.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/13.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/14.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/15.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/16.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/17.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/18.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/2a.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/003.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/004.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/5a.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/005.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/006.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/8a.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/9a.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/12a.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/19.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/Ancient-Aliens.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/drevil.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/img2.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/img4.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/img5.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/img6.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/img11.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/img12.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/leo.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/meme1.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/One-Does-Not-Simply.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/Oprah-You-Get-A.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/patrick.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/putin.jpg" onclick="setImg(this.src)" alt="">
+        <img src="./img/X-Everywhere.jpg" onclick="setImg(this.src)" alt="">
       </section>
-    </div>
+    </main>
+
   </main>
 
-  <main class="curr-page page-gallery main-content ">
-    <section class="grid-container">
-      <input class="text-container" type="text" name="txt" value="" oninput=""
-        placeholder="Search for keywords here"></button>
-
-      <img src="./img/1.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/2.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/3.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/4.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/5.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/6.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/7.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/8.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/9.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/10.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/11.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/12.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/13.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/14.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/15.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/16.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/17.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/18.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/2a.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/003.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/004.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/5a.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/005.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/006.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/8a.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/9a.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/12a.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/19.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/Ancient-Aliens.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/drevil.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/img2.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/img4.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/img5.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/img6.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/img11.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/img12.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/leo.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/meme1.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/One-Does-Not-Simply.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/Oprah-You-Get-A.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/patrick.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/putin.jpg" onclick="setImg(this.src)" alt="">
-      <img src="./img/X-Everywhere.jpg" onclick="setImg(this.src)" alt="">
-    </section>
-  </main>
-
-
-  <footer class="footer full main-layout" aria-label="footer section">
+  <footer class="">
     <div class="logo">MEME EDITOR™️</div>
     <small>© All rights reservered to Amir Greenberg™️ 2023 </small>
-    <ul class="social-links flex clean-list">
+    <ul class="social-links clean-list center flex align-center">
 
       <li><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
 
@@ -138,6 +141,17 @@
 
     </ul>
   </footer>
+
+  <!-- <header class="main-header flex space-between align-center ">
+    <div class="logo">MEME EDITOR</div>
+    <nav class="main-nav a">
+      <ul class="main-nav-list flex  clean-list ">
+        <li class="flex align-center "><a onclick="onSwitchPage(this)" id="toGallery">Gallery</a></li>
+        <li class="flex align-center "><a onclick="onSwitchPage(this)" id="toEditor">Editor</a></li>
+      </ul>
+    </nav>
+    <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
+  </header> -->
 
   <script>
     function toggleMenu() {

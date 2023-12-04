@@ -28,9 +28,13 @@
     justify-content: space-between;
 }
 
-/* .flex.column {
+.flex.space-around {
+    justify-content: space-around;
+}
+
+.flex.column {
     flex-direction: column;
-} */
+}
 
 /* LIST HELPERS */
 
