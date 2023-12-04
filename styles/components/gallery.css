@@ -12,6 +12,7 @@
     gap: 40px;
     padding-inline: 0px;
     margin: 0 auto;
+    margin-top: clamp(0.5em, 2vw, 3em);
 }
 
 .editor {

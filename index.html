@@ -22,6 +22,7 @@
       <ul class="main-nav-list flex  clean-list ">
         <li class="flex align-center "><a onclick="onSwitchPage(this)" id="toGallery">Gallery</a></li>
         <li class="flex align-center "><a onclick="onSwitchPage(this)" id="toEditor">Editor</a></li>
+        <li class="flex align-center "><a onclick="onSwitchPage(this)" id="toSaved">Saved</a></li>
       </ul>
     </nav>
     <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
@@ -62,16 +63,17 @@
           <button onclick="onDeleteLine()" alt="Delete line" title="Delete line">
             <img src="./icons/trash.svg" /></button>
 
-          <!-- <button   class="download-btn" onclick="downloadImg(this)"  alt="Download MEME" title="Download MEME" download="my-img.jpg">
-          <img src="./icons/download.svg" /></button> -->
-
           <button onclick="onUploadImg()" alt="Share MEME to Facebook " title="Share MEME to Facebook">
             <img src="./icons/share.svg" /></button>
 
-          <a href="#" class="download-btn " onclick="downloadImg(this)" alt="Download MEME" title="Download MEME"
+          <button onclick="onSaveImg()" alt="Save your MEME" title="Save your MEME">
+            <img src="./icons/save.svg" /></button>
+
+          <a href="#" class="download-btn " onclick="onDownloadImg(this)" alt="Download MEME" title="Download MEME"
             download="my-img.jpg">
             <h2>Download your MEME</h2>
 
+        
           </a>
         </section>
       </div>
@@ -79,8 +81,8 @@
 
     <main class="curr-page page-gallery main-content ">
       <section class="grid-container">
-        <input class="text-container" type="text" name="txt" value="" oninput=""
-          placeholder="Search for keywords here"></button>
+        <!-- <input class="text-container" type="text" name="txt" value="" oninput=""
+          placeholder="Search for keywords here"></button> -->
 
         <img src="./img/1.jpg" onclick="setImg(this.src)" alt="">
         <img src="./img/2.jpg" onclick="setImg(this.src)" alt="">
@@ -128,6 +130,13 @@
       </section>
     </main>
 
+    <main class=" page-saved main-content ">
+      <section class="hidden grid-container saved">
+
+
+      </section>
+    </main>
+
   </main>
 
   <footer class="">
@@ -142,30 +151,16 @@
     </ul>
   </footer>
 
-  <!-- <header class="main-header flex space-between align-center ">
-    <div class="logo">MEME EDITOR</div>
-    <nav class="main-nav a">
-      <ul class="main-nav-list flex  clean-list ">
-        <li class="flex align-center "><a onclick="onSwitchPage(this)" id="toGallery">Gallery</a></li>
-        <li class="flex align-center "><a onclick="onSwitchPage(this)" id="toEditor">Editor</a></li>
-      </ul>
-    </nav>
-    <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
-  </header> -->
-
   <script>
-    function toggleMenu() {
-      document.body.classList.toggle('menu-open')
-    }
+  
   </script>
+  <script src="js/controllers/gallery.controller.js"></script>
+  <script src="js/controllers/meme-controller.js"></script>
+  <script src="js/controllers/saved.controller.js"></script>
   <script src="js/services/storage.service.js"></script>
   <script src="js/services/i18n-service.js"></script>
-  <script src="js/controllers/gallery.controller.js"></script>
   <script src="js/services/gallery.service.js"></script>
-  <script src="js/controllers/meme-controller.js"></script>
   <script src="js/services/meme.service.js"></script>
-  <script src="js/services/saved.services.js"></script>
-  <script src="js/controllers/saved.controller.js"></script>
 </body>
 
 </html>

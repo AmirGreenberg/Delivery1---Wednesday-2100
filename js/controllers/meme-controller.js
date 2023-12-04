@@ -191,11 +191,20 @@ function managePages(destination) {
                 var selectedLine = _getLine()
                 if (!selectedLine) onInit()
                 gCurrPage = 'page-editor'
-                // console.log("🚀 ~ file: meme-controller.js:193 ~ managePages ~ selectedLine:", selectedLine)
-                // gElTextContainer.value = selectedLine.txt
-                // gElTextContainer.focus()
-                // resizeCanvas()
-                // setTimeout(() => renderMeme(), 100)
+            }
+            break
+
+        case 'toSaved':
+            if (gCurrPage === 'saved') return
+            else {
+                var elPrevPage = document.querySelector('.curr-page')
+                elPrevPage.classList.toggle('hidden')
+                elPrevPage.classList.toggle('curr-page')
+                var elNextPage = document.querySelector('.saved')
+                elNextPage.classList.toggle('hidden')
+                elNextPage.classList.toggle('curr-page')
+                gCurrPage = 'saved'
+                renderSaved()
             }
             break
 
@@ -216,4 +225,38 @@ function setOwnImg(pic) {
     gMeme
     onInit()
     managePages('toEditor')
+}
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open')
+}
+
+function onSaveImg(elLink) {
+    const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
+    var elSaved = document.querySelector('.saved')
+    console.log('🚀  elSaved:', elSaved)
+    console.log("🚀  gImgs[0]:", gImgs[0].url)
+
+    elSaved.innerHTML += `<img style='display:block; width:200px' 
+    src='${imgContent}' onclick="setImg('${gImgs[0].url}')" "setLoaclStorage()" alt="" >`
+    console.log('🚀  elSaved.innerHTML:', elSaved.innerHTML)
+    _saveToStorage(SAVED_KEY, {
+        html: elSaved.innerHTML,
+        memes: gMeme,
+    })
+}
+
+function renderSaved() {
+    var saved = _loadFromStorage(SAVED_KEY)
+    if (!saved) return
+    
+    var elSaved = document.querySelector('.saved')
+    elSaved.innerHTML = saved.html
+}
+
+function setLoaclStorage() {
+    console.log('check')
+    var saved = _loadFromStorage(SAVED_KEY)
+    gImgs = saved.imgs
+    gMeme = saved.memes
 }

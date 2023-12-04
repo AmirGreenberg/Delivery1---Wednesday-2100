@@ -2,6 +2,7 @@
 const BOX_MARGIN = 20
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 const TEXTBOX_BORDER_COLOR = 'white'
+const SAVED_KEY = 'savedDB'
 
 let gElCanvas
 let gElCanvasContainer
@@ -9,6 +10,7 @@ let gElTextContainer
 let gCtx
 let gStartPos
 let gCurrPage
+let gSaved
 var gCurrImg
 var gSelectedLine
 
@@ -123,7 +125,7 @@ function onChangeTextColor() {
 function onChangeStrokeColor() {
     var newColor = document.querySelector('[name=txt-stroke]').value
     var selectedLine = _getLine()
-    selectedLine.stroke = newColor.toString
+    selectedLine.stroke = newColor
     renderMeme()
     gElTextContainer.focus()
 }
@@ -233,7 +235,7 @@ function onChangeText(txt) {
     renderMeme()
 }
 
-function downloadImg(elLink) {
+function onDownloadImg(elLink) {
     const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
     elLink.href = imgContent
 }
@@ -260,7 +262,6 @@ function doUploadImg(imgDataUrl, onSuccess) {
         if (XHR.readyState !== XMLHttpRequest.DONE) return
         if (XHR.status !== 200) return console.error('Error uploading image')
         const { responseText: url } = XHR
-        console.log('Got back live url:', url)
         onSuccess(url)
     }
     XHR.onerror = (req, ev) => {
@@ -285,4 +286,12 @@ function _getLine() {
 
 function _getLineIdx() {
     return gMeme.selectedLineIdx
+}
+
+function _saveToStorage(key, value) {
+    saveToStorage(key, value)
+}
+
+function _loadFromStorage(key) {
+    return loadFromStorage(key)
 }
