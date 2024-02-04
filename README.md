@@ -7,9 +7,9 @@ https://github.com/AmirGreenberg/MEME-Editor-by-Amir-Greenberg-/assets/132469813
 
 <div>
 <img src="https://res.cloudinary.com/dqjddwtf4/image/upload/v1707041033/meme_generator_screenshot1_tda2hg.png" width="400px"  /> 
-<img src="https://res.cloudinary.com/dqjddwtf4/image/upload/v1707041031/meme_generator_screenshot4_jaivwv.png" width="400px"  /> 
+<img src="https://res.cloudinary.com/dqjddwtf4/image/upload/v1707041031/meme_generator_screenshot4_jaivwv.png" width="800px"  /> 
 <img src="https://res.cloudinary.com/dqjddwtf4/image/upload/v1707041032/meme_generator_screenshot2_kb06ud.png" width="400px"  /> 
-<img src="https://res.cloudinary.com/dqjddwtf4/image/upload/v1707041031/meme_generator_screenshot3_vndxfd.png" width="400px"  /> 
+<img src="https://res.cloudinary.com/dqjddwtf4/image/upload/v1707041031/meme_generator_screenshot3_vndxfd.png" width="800px"  /> 
 </div>
 
 
